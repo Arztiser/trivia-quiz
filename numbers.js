@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('https://csrng.net/csrng/csrng.php?min=1&max=100')
-        .then(response => response.json())
+    fetch('https://www.random.org/integers/?num=1&min=1&max=100&col=1&base=10&format=plain&rnd=new')
+        .then(response => response.text())
         .then(data => {
             const numberContainer = document.getElementById('number-container');
-            const number = document.createElement('p');
-            number.textContent = `Random Number: ${data[0].random}`;
-            numberContainer.appendChild(number);
+            numberContainer.textContent = `Random Number: ${data.trim()}`;
         })
         .catch(error => {
             console.error('Error fetching number:', error);
