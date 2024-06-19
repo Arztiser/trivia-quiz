@@ -1,102 +1,109 @@
-@import url('https://fonts.googleapis.com/css?family=Jersey 10:400i|Jersey 10:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Jersey+10:400i|Jersey+10:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 :root {
-	--d: 700ms;
-	--e: cubic-bezier(0.19, 1, 0.22, 1);
-	--font-sans: 'Jersey 10', sans-serif;
-	--font-serif: 'Jersey 10', serif;
+    --d: 700ms;
+    --e: cubic-bezier(0.19, 1, 0.22, 1);
+    --font-sans: 'Jersey 10', sans-serif;
+    --font-serif: 'Jersey 10', serif;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Jersey 10:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 html {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
+
 body {
-	background-color: #121214;
-	color: #f5f5f7;
-	font-family: "Jersey 10", monospace;
-	overflow:scroll;
-    overflow-x:hidden;
-	background: linear-gradient(135deg, hsl(227, 42%, 9%), #121214);
+    background-color: #121214;
+    color: #f5f5f7;
+    font-family: "Jersey 10", monospace;
+    overflow: scroll;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, hsl(227, 42%, 9%), #121214);
 }
+
 body::-webkit-scrollbar {
-	width: 0;
-	background-color: transparent !important;
+    width: 0;
+    background-color: transparent !important;
 }
+
 header {
-	position: sticky !important;
-	top: 0;
-	background-color: #121214;
-	text-wrap: nowrap;
-	opacity: 70%;
-	font-family: "Jersey 10", sans-serif;
-	font-weight: 300;
-	font-style: normal;
+    position: sticky !important;
+    top: 0;
+    background-color: #121214;
+    text-wrap: nowrap;
+    opacity: 70%;
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 300;
+    font-style: normal;
 }
 
 .topnav {
-  background-color: #333;
-  overflow: hidden;
+    background-color: #333;
+    overflow: hidden;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
-  color: black;
+    background-color: #ddd;
+    color: black;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
-  background-color: #04AA6D;
-  color: white;
+    background-color: #04AA6D;
+    color: white;
 }
-  
-  .center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
-  }
-  
-  .centers {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
-  }
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.centers {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
 
 .topnav-right {
-	float: right;
-  }
-.banner{
+    float: right;
+}
+
+.banner {
     width: 100%;
     top: 100;
-    
 }
+
 .container {
-	display: flex;
-	flex-direction: row;
-	align-items: center !important;
-	padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center !important;
+    padding: 1rem;
 }
+
 #card {
-	display: flex;
-	text-align: right;
+    display: flex;
+    text-align: right;
 }
+
 .logo a {
-	font-size: 3rem;
-	text-align: left;
-	font-weight: bold;
-	color: #f0f0f0;
-	text-decoration: none;
-	text-wrap: nowrap;
+    font-size: 3rem;
+    text-align: left;
+    font-weight: bold;
+    color: #f0f0f0;
+    text-decoration: none;
+    text-wrap: nowrap;
 }
