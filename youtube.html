@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2c9118">
+    <meta name="description" content="Tamo is an all-in-one Discord bot that allows you to work with economy, moderation, fun, games, and much more.">
+    <title>THE Randoms</title>
+    <link rel="icon" type="image/png" href="./img/pfp.png">
+    <link rel="stylesheet" type="text/css" href="https://therandoms.pages.dev/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Font styling for the whole page */
+        body {
+            font-family: 'Jersey 10', sans-serif;
+            font-size: 30px; /* Set font size to thirty */
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .topnav a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        iframe {
+            border: none;
+            width: 560px;
+            height: 315px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="topnav">
+            <a href="index.html" class="active">Home</a>
+            <a href="facts.html">Random Facts</a>
+            <a href="quotes.html">Random Quotes</a>
+            <a href="jokes.html">Random Jokes</a>
+            <a href="numbers.html">Random Numbers</a>
+            <a href="letters.html">Random Letters</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="video-container">
+            <h1>Random YouTube Video</h1>
+            <div id="video-container">
+                <!-- The video will be embedded here -->
+            </div>
+            <button onclick="generateRandomVideo()">Generate Random Video</button>
+        </div>
+    </main>
+
+    <script>
+        function generateRandomString(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        function checkVideoExists(videoId, callback) {
+            const img = new Image();
+            img.onload = function() {
+                callback(true);
+            };
+            img.onerror = function() {
+                callback(false);
+            };
+            img.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+        }
+
+        function generateRandomVideo() {
+            const videoId = generateRandomString(11); // YouTube video IDs are 11 characters long
+            checkVideoExists(videoId, function(exists) {
+                if (exists) {
+                    const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+                    document.getElementById('video-container').innerHTML = `<iframe width="560" height="315" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                } else {
+                    generateRandomVideo(); // Try generating another video ID if the current one does not exist
+                }
+            });
+        }
+
+        // Generate a video on page load
+        window.onload = generateRandomVideo;
+    </script>
+</body>
+</html>
