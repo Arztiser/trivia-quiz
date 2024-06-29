@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-     <style>
+    <style>
     /* Font styling for the whole page */
         body{
             font-family: 'Jersey 10', sans-serif;
@@ -41,17 +41,27 @@
             background-color: #E82B38;
             color: white;
         }
+         .logo {
+            color: inherit; /* Keep the color as it was */
+        }
+
+        .logo:hover {
+            background-color: transparent; /* Set the background color to transparent on hover */
+        }
     </style>
-    
 </head>
 <body>
-    <div class="topnav">
-        <a href="index.html">Home</a>
-        <a href="facts.html">Random Facts</a>
-        <a href="quotes.html">Random Quotes</a>
-        <a href="jokes.html" class="active">Random Jokes</a>
-        <a href="numbers.html">Random Numbers</a>
-        <a href="letters.html">Random Letters</a>
+    <header>
+        <div class="topnav">
+        <h1><a href="#header" class="logo">THE Randoms</a></h1>
+        <div class="topnav-right">
+            <a href="index.html" class="active">Home</a>
+            <a href="facts.html">Facts</a>
+            <a href="quotes.html">Quotes</a>
+            <a href="jokes.html">Jokes</a>
+            <a href="numbers.html">Numbers</a>
+            <a href="letters.html">Letters</a>
+        </div>
     </div>
 
     <div class="container">
