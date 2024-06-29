@@ -62,6 +62,10 @@
             font-size: 16px;
             cursor: pointer;
         }
+
+        .hidden-iframe {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -82,6 +86,7 @@
             <div id="video-container">
                 <!-- The video will be embedded here -->
             </div>
+            <iframe id="hidden-checker" class="hidden-iframe"></iframe>
             <button onclick="generateRandomVideo()">Generate Random Video</button>
         </div>
     </main>
@@ -97,14 +102,15 @@
         }
 
         function checkVideoExists(videoId, callback) {
-            const img = new Image();
-            img.onload = function() {
-                callback(true);
+            const hiddenIframe = document.getElementById('hidden-checker');
+            hiddenIframe.src = `https://www.youtube.com/embed/${videoId}`;
+            hiddenIframe.onload = function() {
+                if (hiddenIframe.contentWindow.location.href.includes('error')) {
+                    callback(false);
+                } else {
+                    callback(true);
+                }
             };
-            img.onerror = function() {
-                callback(false);
-            };
-            img.src = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
         }
 
         function generateRandomVideo() {
