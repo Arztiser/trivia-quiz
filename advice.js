@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const factContainer = document.getElementById('advice-container');
             const fact = document.createElement('p');
             advice.textContent = data.text;
-            adviceContainer.appendChild(advice);
+            adviceContainer.appendChild(slip);
         })
         .catch(error => {
             console.error('Error fetching fact:', error);
