@@ -1,35 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('https://randomtube.xyz/b/')
-        .then(response => response.json())
-        .then(data => {
-            if (data && data.url) {
-                const videoUrl = data.url;
-
-                // Directly embedding the video as it comes from /b/
-                const videoContainer = document.getElementById('video-container');
-                const videoEmbed = document.createElement('iframe');
-                videoEmbed.src = videoUrl;
-                videoEmbed.width = "560";
-                videoEmbed.height = "315";
-                videoEmbed.frameborder = "0";
-                videoEmbed.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-                videoEmbed.allowFullscreen = true;
-                videoContainer.appendChild(videoEmbed);
-            } else {
-                displayNoVideoMessage();
-            }
+    fetch('https://randomtube.xyz/b/', { mode: 'no-cors' })
+        .then(response => {
+            // Since the response is opaque, you can't access the response data directly
+            const videoContainer = document.getElementById('video-container');
+            const videoEmbed = document.createElement('iframe');
+            videoEmbed.src = 'https://randomtube.xyz/b/';
+            videoEmbed.width = "560";
+            videoEmbed.height = "315";
+            videoEmbed.frameborder = "0";
+            videoEmbed.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+            videoEmbed.allowFullscreen = true;
+            videoContainer.appendChild(videoEmbed);
         })
         .catch(error => {
             console.error('Error fetching video:', error);
             displayErrorMessage();
         });
-
-    function displayNoVideoMessage() {
-        const videoContainer = document.getElementById('video-container');
-        const noVideoMessage = document.createElement('p');
-        noVideoMessage.textContent = 'No suitable video found.';
-        videoContainer.appendChild(noVideoMessage);
-    }
 
     function displayErrorMessage() {
         const videoContainer = document.getElementById('video-container');
