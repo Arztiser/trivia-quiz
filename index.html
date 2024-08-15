@@ -3,90 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#E82B38">
-    <meta name="description" content="THE Randoms Is A Website That Lets You View And Do Random Things Such As Random Quizzes, Facts, Quotes, Numbers, And Letters.">
+    <meta name="theme-color" content="#2c9118">
+    <meta name="description" content="Tamo is an all-in-one Discord bot that allows you to work with economy, moderation, fun, games, and much more.">
     <title>THE Randoms</title>
     <link rel="icon" type="image/png" href="./img/pfp.png">
-   <link rel="stylesheet" type="text/css" href="https://therandoms.pages.dev/css/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-   <style>
-        /* Font styling for the whole page */
-        body {
-            font-family: 'Jersey 10', sans-serif;
-            font-size: 30px; /* Set font size to thirty */
-        }
-        
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        .topnav a {
-            float: left;
-            display: block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .topnav a.active {
-            background-color: #E82B38;
-            color: white;
-        }
-
-        .logo {
-            color: inherit; /* Keep the color as it was */
-        }
-
-        .logo:hover {
-            background-color: transparent; /* Set the background color to transparent on hover */
-        }
-
-        .container {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px;
-        }
-
-        .container > div {
-            flex: 1;
-            margin: 0 10px;
-        }
-
-        p {
-            margin: 10px 0;
-        }
-
-        h1, h2 {
-            margin: 0 0 20px 0;
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <div class="topnav">
-            <h1><a href="#header" class="logo">THE Randoms</a></h1>
-            <div class="topnav-right">
-                <a href="index.html">Home</a>
-                <a href="facts.html">Facts</a>
-                <a href="quotes.html">Quotes</a>
-                <a href="jokes.html">Jokes</a>
-                <a href="numbers.html">Numbers</a>
-                <a href="letters.html">Letters</a>
-            </div>
-        </div>
-    </header>
+    <div class="topnav">
+        <a href="index.html" class="active">Home</a>
+        <a href="facts.html">Random Facts</a>
+        <a href="quotes.html">Random Quotes</a>
+        <a href="jokes.html">Random Jokes</a>
+        <a href="numbers.html">Random Numbers</a>
+        <a href="letters.html">Random Letters</a>
+    </div>
 
     <div class="container">
-        <h1>Random Quiz</h1>
+        <h1>Random Quiz Game</h1>
         <div id="quiz-container"></div>
         <button id="submit-btn">Submit</button>
         <div id="result"></div>
