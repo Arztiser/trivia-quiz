@@ -28,25 +28,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Populate person details
             const personDetailsGrid = document.querySelector('#person-container .details-grid');
-            personDetailsGrid.innerHTML = `
-                <p class="label">Name:</p><p>${fullName}</p>
-                <p class="label">Address:</p><p>${address}</p>
-                <p class="label">City:</p><p>${city}</p>
-                <p class="label">State:</p><p>${state}</p>
-                <p class="label">Country:</p><p>${country}</p>
-                <p class="label">Postcode:</p><p>${postcode}</p>
-                <p class="label">Email:</p><p>${email}</p>
-                <p class="label">Phone:</p><p>${phone}</p>
-                <p class="label">Date of Birth:</p><p>${dob}</p>
-            `;
+            if (personDetailsGrid) {
+                personDetailsGrid.innerHTML = `
+                    <p class="label">Name:</p><p>${fullName}</p>
+                    <p class="label">Address:</p><p>${address}</p>
+                    <p class="label">City:</p><p>${city}</p>
+                    <p class="label">State:</p><p>${state}</p>
+                    <p class="label">Country:</p><p>${country}</p>
+                    <p class="label">Postcode:</p><p>${postcode}</p>
+                    <p class="label">Email:</p><p>${email}</p>
+                    <p class="label">Phone:</p><p>${phone}</p>
+                    <p class="label">Date of Birth:</p><p>${dob}</p>
+                `;
+            }
 
             // Populate favorites
             const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
-            favoritesDetailsGrid.innerHTML = `
-                <p class="label">Favorite Color:</p><p>${favoriteColor}</p>
-                <p class="label">Favorite Food:</p><p>${favoriteFood}</p>
-                <p class="label">Favorite Hobby:</p><p>${favoriteHobby}</p>
-            `;
+            if (favoritesDetailsGrid) {
+                favoritesDetailsGrid.innerHTML = `
+                    <p class="label">Favorite Color:</p><p>${favoriteColor}</p>
+                    <p class="label">Favorite Food:</p><p>${favoriteFood}</p>
+                    <p class="label">Favorite Hobby:</p><p>${favoriteHobby}</p>
+                `;
+            }
         })
         .catch(error => {
             console.error('Error fetching person data:', error);
