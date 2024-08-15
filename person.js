@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Function to get a random word from an array
+    function getRandomWord(words) {
+        const randomIndex = Math.floor(Math.random() * words.length);
+        return words[randomIndex];
+    }
+
+    // Predefined array of words
+    const words = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Magenta", "Pink", "White", "Black", "Brown", "Gray", "Silver", "Gold", "Maroon", "Teal", "Cyan", "Violet", "Bronze", ];
+
+    // Fetch random user data
     fetch('https://randomuser.me/api/')
         .then(response => response.json())
         .then(data => {
@@ -14,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = person.email;
             const phone = person.phone;
             const dob = new Date(person.dob.date).toLocaleDateString();
+            const randomWord = getRandomWord(words);
 
+            // Update the inner HTML of the person container
             personContainer.innerHTML = `
                 <p><strong>Name:</strong> ${fullName}</p>
                 <p><strong>Address:</strong> ${address}, ${city}, ${state}, ${postcode}</p>
@@ -22,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p><strong>Email:</strong> ${email}</p>
                 <p><strong>Phone:</strong> ${phone}</p>
                 <p><strong>Date of Birth:</strong> ${dob}</p>
+                <p><strong>Color:</strong> ${randomWord}</p>
             `;
         })
         .catch(error => {
