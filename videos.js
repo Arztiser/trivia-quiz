@@ -1,20 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('https://randomtube.xyz')
+    fetch('https://randomtube.xyz/b/')
         .then(response => response.json())
         .then(data => {
-            if (data && data.video) {
-                const videoUrl = data.video.url;
+            if (data && data.url) {
+                const videoUrl = data.url;
 
-                // Check if the URL contains "/sex/"
-                if (!videoUrl.includes('/sex/')) {
-                    const videoContainer = document.getElementById('video-container');
-                    const videoEmbed = document.createElement('iframe');
-                    videoEmbed.src = videoUrl;
-                    videoEmbed.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-                    videoContainer.appendChild(videoEmbed);
-                } else {
-                    displayNoVideoMessage();
-                }
+                // Directly embedding the video as it comes from /b/
+                const videoContainer = document.getElementById('video-container');
+                const videoEmbed = document.createElement('iframe');
+                videoEmbed.src = videoUrl;
+                videoEmbed.width = "560";
+                videoEmbed.height = "315";
+                videoEmbed.frameborder = "0";
+                videoEmbed.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                videoEmbed.allowFullscreen = true;
+                videoContainer.appendChild(videoEmbed);
             } else {
                 displayNoVideoMessage();
             }
