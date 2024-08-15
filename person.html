@@ -51,7 +51,14 @@
         }
 
         .container {
+            display: flex;
+            justify-content: space-between;
             margin: 20px;
+        }
+
+        .container > div {
+            flex: 1;
+            margin: 0 10px;
         }
 
         p {
@@ -75,12 +82,12 @@
     </header>
 
     <div class="container">
-        <h1>Random Person</h1>
         <div id="person-container">
+            <h1>Random Person</h1>
             <!-- Personal details will be loaded here -->
         </div>
-        <h2>Favorites</h2>
         <div id="favorites-container">
+            <h1>Favorites</h1>
             <!-- Favorites will be loaded here -->
         </div>
     </div>
