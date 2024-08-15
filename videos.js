@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('https://randomtube.xyz/api')
+    fetch('https://randomtube.xyz')
         .then(response => response.json())
         .then(data => {
             if (data && data.video) {
