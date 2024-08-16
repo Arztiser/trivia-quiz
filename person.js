@@ -28,8 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
       const favoriteColor = getRandomItem(colors);
+      const favoriteDay = getRandomItem(days);
       const favoriteFood = getRandomItem(foods);
       const favoriteHobby = getRandomItem(hobbies);
+      const favoriteHoliday = getRandomItem(holidays);
+      const favoriteMusic = getRandomItem(music);
+      const favoriteSeason = getRandomItem(seasons);
 
       // Populate person details
       const personDetailsGrid = document.querySelector('#person-container .details-grid');
@@ -49,8 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
       favoritesDetailsGrid.innerHTML = `
         <p><strong>Color:</strong> ${favoriteColor}</p>
+        <p><strong>Day:</strong> ${favoriteDay}</p>
         <p><strong>Food:</strong> ${favoriteFood}</p>
         <p><strong>Hobby:</strong> ${favoriteHobby}</p>
+        <p><strong>Holiday:</strong> ${favoriteHoliday}</p>
+        <p><strong>Music:</strong> ${favoriteMusic}</p>
+        <p><strong>Season:</strong> ${favoriteSeason}</p>
       `;
     })
     .catch(error => {
