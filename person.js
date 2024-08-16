@@ -34,48 +34,41 @@ document.addEventListener('DOMContentLoaded', () => {
       const favoriteMusic = getRandomItem(music);
       const favoriteSeason = getRandomItem(seasons);
 
-      // Inline styles for person details
-      const style = "display: inline-block; margin-right: 15px; font-family: Arial, sans-serif; font-size: 14px;";
-      const sectionTitleStyle = "font-weight: bold; font-size: 16px;";
-
-      // Populate person details
+      // Person details in rows of three
       const personDetailsGrid = document.querySelector('#person-container .details-grid');
       personDetailsGrid.innerHTML = `
-        <p style="${sectionTitleStyle}">Random People</p>
-        <p style="margin: 5px 0;">
-          <span style="${style}"><strong>Name:</strong> ${fullName}</span>
-          <span style="${style}"><strong>Address:</strong> ${address}</span>
-        </p>
-        <p style="margin: 5px 0;">
-          <span style="${style}"><strong>City:</strong> ${city}</span>
-          <span style="${style}"><strong>State:</strong> ${state}</span>
-          <span style="${style}"><strong>Country:</strong> ${country}</span>
-          <span style="${style}"><strong>Postcode:</strong> ${postcode}</span>
-        </p>
-        <p style="margin: 5px 0;">
-          <span style="${style}"><strong>Email:</strong> ${email}</span>
-          <span style="${style}"><strong>Phone:</strong> ${phone}</span>
-        </p>
-        <p style="margin: 5px 0;">
-          <span style="${style}"><strong>Date of Birth:</strong> ${dob}</span>
-        </p>
+        <div class="row">
+          <p><strong>Name:</strong> ${fullName}</p>
+          <p><strong>Address:</strong> ${address}</p>
+          <p><strong>City:</strong> ${city}</p>
+        </div>
+        <div class="row">
+          <p><strong>State:</strong> ${state}</p>
+          <p><strong>Country:</strong> ${country}</p>
+          <p><strong>Postcode:</strong> ${postcode}</p>
+        </div>
+        <div class="row">
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Date of Birth:</strong> ${dob}</p>
+        </div>
       `;
 
-      // Populate favorites in rows of three
+      // Favorites in rows of three
       const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
       favoritesDetailsGrid.innerHTML = `
-        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-          <span style="${style}"><strong>Color:</strong> ${favoriteColor}</span>
-          <span style="${style}"><strong>Day:</strong> ${favoriteDay}</span>
-          <span style="${style}"><strong>Food:</strong> ${favoriteFood}</span>
+        <div class="row">
+          <p><strong>Color:</strong> ${favoriteColor}</p>
+          <p><strong>Day:</strong> ${favoriteDay}</p>
+          <p><strong>Food:</strong> ${favoriteFood}</p>
         </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-          <span style="${style}"><strong>Hobby:</strong> ${favoriteHobby}</span>
-          <span style="${style}"><strong>Holiday:</strong> ${favoriteHoliday}</span>
-          <span style="${style}"><strong>Music:</strong> ${favoriteMusic}</span>
+        <div class="row">
+          <p><strong>Hobby:</strong> ${favoriteHobby}</p>
+          <p><strong>Holiday:</strong> ${favoriteHoliday}</p>
+          <p><strong>Music:</strong> ${favoriteMusic}</p>
         </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-          <span style="${style}"><strong>Season:</strong> ${favoriteSeason}</span>
+        <div class="row">
+          <p><strong>Season:</strong> ${favoriteSeason}</p>
         </div>
       `;
     })
