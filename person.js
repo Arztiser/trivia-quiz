@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('https://randomuser.me/api/') // Fetch a single random person
+  fetch('https://randomuser.me/api/')
     .then(response => response.json())
     .then(data => {
       const person = data.results[0];
@@ -34,49 +34,45 @@ document.addEventListener('DOMContentLoaded', () => {
       const favoriteMusic = getRandomItem(music);
       const favoriteSeason = getRandomItem(seasons);
 
-      // Person details array
-      const personDetailsArray = [
-        `<p><strong>Name:</strong> ${fullName}</p>`,
-        `<p><strong>Address:</strong> ${address}</p>`,
-        `<p><strong>City:</strong> ${city}</p>`,
-        `<p><strong>State:</strong> ${state}</p>`,
-        `<p><strong>Country:</strong> ${country}</p>`,
-        `<p><strong>Postcode:</strong> ${postcode}</p>`,
-        `<p><strong>Email:</strong> ${email}</p>`,
-        `<p><strong>Phone:</strong> ${phone}</p>`,
-        `<p><strong>Date of Birth:</strong> ${dob}</p>`
-      ];
-
-      // Favorites array
-      const favoriteDetailsArray = [
-        `<p><strong>Color:</strong> ${favoriteColor}</p>`,
-        `<p><strong>Day:</strong> ${favoriteDay}</p>`,
-        `<p><strong>Food:</strong> ${favoriteFood}</p>`,
-        `<p><strong>Hobby:</strong> ${favoriteHobby}</p>`,
-        `<p><strong>Holiday:</strong> ${favoriteHoliday}</p>`,
-        `<p><strong>Music:</strong> ${favoriteMusic}</p>`,
-        `<p><strong>Season:</strong> ${favoriteSeason}</p>`
-      ];
-
-      // Populate person details in rows of three
+      // Person details in rows of three
       const personDetailsGrid = document.querySelector('#person-container .details-grid');
-      personDetailsGrid.innerHTML = wrapItemsInRows(personDetailsArray, 3);
+      personDetailsGrid.innerHTML = `
+        <div class="row">
+          <p><strong>Name:</strong> ${fullName}</p>
+          <p><strong>Address:</strong> ${address}</p>
+          <p><strong>City:</strong> ${city}</p>
+        </div>
+        <div class="row">
+          <p><strong>State:</strong> ${state}</p>
+          <p><strong>Country:</strong> ${country}</p>
+          <p><strong>Postcode:</strong> ${postcode}</p>
+        </div>
+        <div class="row">
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>Date of Birth:</strong> ${dob}</p>
+        </div>
+      `;
 
-      // Populate favorites in rows of three
+      // Favorites in rows of three
       const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
-      favoritesDetailsGrid.innerHTML = wrapItemsInRows(favoriteDetailsArray, 3);
+      favoritesDetailsGrid.innerHTML = `
+        <div class="row">
+          <p><strong>Color:</strong> ${favoriteColor}</p>
+          <p><strong>Day:</strong> ${favoriteDay}</p>
+          <p><strong>Food:</strong> ${favoriteFood}</p>
+        </div>
+        <div class="row">
+          <p><strong>Hobby:</strong> ${favoriteHobby}</p>
+          <p><strong>Holiday:</strong> ${favoriteHoliday}</p>
+          <p><strong>Music:</strong> ${favoriteMusic}</p>
+        </div>
+        <div class="row">
+          <p><strong>Season:</strong> ${favoriteSeason}</p>
+        </div>
+      `;
     })
     .catch(error => {
       console.error('Error fetching person data:', error);
     });
 });
-
-// Function to wrap items into rows of specified count
-function wrapItemsInRows(items, itemsPerRow) {
-  let html = '';
-  for (let i = 0; i < items.length; i += itemsPerRow) {
-    const rowItems = items.slice(i, i + itemsPerRow);
-    html += `<div class="row">${rowItems.join('')}</div>`;
-  }
-  return html;
-}
