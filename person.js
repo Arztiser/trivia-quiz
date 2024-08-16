@@ -1,40 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('https://randomuser.me/api/?results=1') // Fetch multiple people
+  fetch('https://randomuser.me/api/') // Fetch a single random person
     .then(response => response.json())
     .then(data => {
-      const people = data.results;
+      const person = data.results[0];
 
-      // Process each person
-      const personDetailsArray = people.map(person => {
-        // Extract person details
-        const fullName = `${person.name.first} ${person.name.last}`;
-        const address = `${person.location.street.number} ${person.location.street.name}`;
-        const city = person.location.city;
-        const state = person.location.state;
-        const country = person.location.country;
-        const postcode = person.location.postcode;
-        const email = person.email;
-        const phone = person.phone;
-        const dob = new Date(person.dob.date).toLocaleDateString();
-
-        return `
-          <div class="person-card">
-            <p><strong>Name:</strong> ${fullName}</p>
-            <p><strong>Address:</strong> ${address}</p>
-            <p><strong>City:</strong> ${city}</p>
-            <p><strong>State:</strong> ${state}</p>
-            <p><strong>Country:</strong> ${country}</p>
-            <p><strong>Postcode:</strong> ${postcode}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Date of Birth:</strong> ${dob}</p>
-          </div>
-        `;
-      });
-
-      // Populate the person grid area
-      const personDetailsGrid = document.querySelector('#person-container .details-grid');
-      personDetailsGrid.innerHTML = wrapItemsInRows(personDetailsArray, 3);
+      // Extract person details
+      const fullName = `${person.name.first} ${person.name.last}`;
+      const address = `${person.location.street.number} ${person.location.street.name}`;
+      const city = person.location.city;
+      const state = person.location.state;
+      const country = person.location.country;
+      const postcode = person.location.postcode;
+      const email = person.email;
+      const phone = person.phone;
+      const dob = new Date(person.dob.date).toLocaleDateString();
 
       // Generate random favorites
       const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Magenta", "Pink", "White", "Black", "Brown", "Gray", "Silver", "Gold", "Maroon", "Teal", "Cyan", "Violet", "Bronze"];
@@ -47,25 +26,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-      const favoriteDetails = [
-        `<p><strong>Color:</strong> ${getRandomItem(colors)}</p>`,
-        `<p><strong>Day:</strong> ${getRandomItem(days)}</p>`,
-        `<p><strong>Food:</strong> ${getRandomItem(foods)}</p>`,
-        `<p><strong>Hobby:</strong> ${getRandomItem(hobbies)}</p>`,
-        `<p><strong>Holiday:</strong> ${getRandomItem(holidays)}</p>`,
-        `<p><strong>Music:</strong> ${getRandomItem(music)}</p>`,
-        `<p><strong>Season:</strong> ${getRandomItem(seasons)}</p>`
+      const favoriteColor = getRandomItem(colors);
+      const favoriteDay = getRandomItem(days);
+      const favoriteFood = getRandomItem(foods);
+      const favoriteHobby = getRandomItem(hobbies);
+      const favoriteHoliday = getRandomItem(holidays);
+      const favoriteMusic = getRandomItem(music);
+      const favoriteSeason = getRandomItem(seasons);
+
+      // Person details array
+      const personDetailsArray = [
+        `<p><strong>Name:</strong> ${fullName}</p>`,
+        `<p><strong>Address:</strong> ${address}</p>`,
+        `<p><strong>City:</strong> ${city}</p>`,
+        `<p><strong>State:</strong> ${state}</p>`,
+        `<p><strong>Country:</strong> ${country}</p>`,
+        `<p><strong>Postcode:</strong> ${postcode}</p>`,
+        `<p><strong>Email:</strong> ${email}</p>`,
+        `<p><strong>Phone:</strong> ${phone}</p>`,
+        `<p><strong>Date of Birth:</strong> ${dob}</p>`
       ];
 
-      // Populate favorites
+      // Favorites array
+      const favoriteDetailsArray = [
+        `<p><strong>Color:</strong> ${favoriteColor}</p>`,
+        `<p><strong>Day:</strong> ${favoriteDay}</p>`,
+        `<p><strong>Food:</strong> ${favoriteFood}</p>`,
+        `<p><strong>Hobby:</strong> ${favoriteHobby}</p>`,
+        `<p><strong>Holiday:</strong> ${favoriteHoliday}</p>`,
+        `<p><strong>Music:</strong> ${favoriteMusic}</p>`,
+        `<p><strong>Season:</strong> ${favoriteSeason}</p>`
+      ];
+
+      // Populate person details in rows of three
+      const personDetailsGrid = document.querySelector('#person-container .details-grid');
+      personDetailsGrid.innerHTML = wrapItemsInRows(personDetailsArray, 3);
+
+      // Populate favorites in rows of three
       const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
-      favoritesDetailsGrid.innerHTML = wrapItemsInRows(favoriteDetails, 3);
+      favoritesDetailsGrid.innerHTML = wrapItemsInRows(favoriteDetailsArray, 3);
     })
     .catch(error => {
       console.error('Error fetching person data:', error);
     });
 });
 
+// Function to wrap items into rows of specified count
 function wrapItemsInRows(items, itemsPerRow) {
   let html = '';
   for (let i = 0; i < items.length; i += itemsPerRow) {
