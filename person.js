@@ -26,26 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const favoriteFood = getRandomItem(foods);
       const favoriteHobby = getRandomItem(hobbies);
 
-      // Populate person details
-      const personDetailsGrid = document.querySelector('#person-container .details-grid');
-      personDetailsGrid.innerHTML = `
-        <p><strong>Name:</strong></p><p>${fullName}</p><br>
-        <p><strong>Address:</strong></p><p>${address}</p><br>
-        <p><strong>City:</strong></p><p>${city}</p><br>
-        <p><strong>State:</strong></p><p>${state}</p><br>
-        <p><strong>Country:</strong></p><p>${country}</p><br>
-        <p><strong>Postcode:</strong></p><p>${postcode}</p><br>
-        <p><strong>Email:</strong></p><p>${email}</p><br>
-        <p><strong>Phone:</strong></p><p>${phone}</p><br>
-        <p><strong>Date of Birth:</strong></p><p>${dob}</p><br>
-      `;
+      // Function to pad the text
+      const padText = (text, length) => text.padEnd(length, ' ');
 
-      // Populate favorites
+      // Align the text
       const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
       favoritesDetailsGrid.innerHTML = `
-        <p><strong>Color:</strong></p><p>${favoriteColor}</p><br>
-        <p><strong>Food:</strong></p><p>${favoriteFood}</p><br>
-        <p><strong>Hobby:</strong></p><p>${favoriteHobby}</p><br>
+        <p><strong>${padText('Color:', 10)}</strong>${favoriteColor}</p><br>
+        <p><strong>${padText('Food:', 10)}</strong>${favoriteFood}</p><br>
+        <p><strong>${padText('Hobby:', 10)}</strong>${favoriteHobby}</p><br>
       `;
     })
     .catch(error => {
