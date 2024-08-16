@@ -23,8 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const holidays = ["Christmas", "Easter", "Halloween", "New Years", "Thanksgiving"];
       const music = ["Pop", "Rock", "Rock & Roll", "Metal", "Country", "Classical", "Hip-Hop", "Rap", "R & B", "Gospel", "Indie", "Electronic", "Alternative", "Disco"];
       const seasons = ["Summer", "Autumn", "Winter", "Spring"];
-      
-      
+
       const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
       const favoriteColor = getRandomItem(colors);
@@ -37,31 +36,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Populate person details
       const personDetailsGrid = document.querySelector('#person-container .details-grid');
-      personDetailsGrid.innerHTML = `
-        <p><strong>Name:</strong> ${fullName}</p>
-        <p><strong>Address:</strong> ${address}</p>
-        <p><strong>City:</strong> ${city}</p>
-        <p><strong>State:</strong> ${state}</p>
-        <p><strong>Country:</strong> ${country}</p>
-        <p><strong>Postcode:</strong> ${postcode}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Date of Birth:</strong> ${dob}</p>
-      `;
+      const personDetails = [
+        `<p><strong>Name:</strong> ${fullName}</p>`,
+        `<p><strong>Address:</strong> ${address}</p>`,
+        `<p><strong>City:</strong> ${city}</p>`,
+        `<p><strong>State:</strong> ${state}</p>`,
+        `<p><strong>Country:</strong> ${country}</p>`,
+        `<p><strong>Postcode:</strong> ${postcode}</p>`,
+        `<p><strong>Email:</strong> ${email}</p>`,
+        `<p><strong>Phone:</strong> ${phone}</p>`,
+        `<p><strong>Date of Birth:</strong> ${dob}</p>`
+      ];
+
+      personDetailsGrid.innerHTML = wrapItemsInRows(personDetails, 3);
 
       // Populate favorites
       const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
-      favoritesDetailsGrid.innerHTML = `
-        <p><strong>Color:</strong> ${favoriteColor}</p>
-        <p><strong>Day:</strong> ${favoriteDay}</p>
-        <p><strong>Food:</strong> ${favoriteFood}</p>
-        <p><strong>Hobby:</strong> ${favoriteHobby}</p>
-        <p><strong>Holiday:</strong> ${favoriteHoliday}</p>
-        <p><strong>Music:</strong> ${favoriteMusic}</p>
-        <p><strong>Season:</strong> ${favoriteSeason}</p>
-      `;
+      const favoriteDetails = [
+        `<p><strong>Color:</strong> ${favoriteColor}</p>`,
+        `<p><strong>Day:</strong> ${favoriteDay}</p>`,
+        `<p><strong>Food:</strong> ${favoriteFood}</p>`,
+        `<p><strong>Hobby:</strong> ${favoriteHobby}</p>`,
+        `<p><strong>Holiday:</strong> ${favoriteHoliday}</p>`,
+        `<p><strong>Music:</strong> ${favoriteMusic}</p>`,
+        `<p><strong>Season:</strong> ${favoriteSeason}</p>`
+      ];
+
+      favoritesDetailsGrid.innerHTML = wrapItemsInRows(favoriteDetails, 3);
+
     })
     .catch(error => {
       console.error('Error fetching person data:', error);
     });
 });
+
+function wrapItemsInRows(items, itemsPerRow) {
+  let html = '';
+  for (let i = 0; i < items.length; i += itemsPerRow) {
+    const rowItems = items.slice(i, i + itemsPerRow);
+    html += `<div class="row">${rowItems.join('')}</div>`;
+  }
+  return html;
+}
