@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const favoriteHobby = getRandomItem(hobbies);
 
       // Populate person details
-      const personDetailsGrid = document.querySelector('#person-container');
+      const personDetailsGrid = document.querySelector('#person-container .details-grid');
       personDetailsGrid.innerHTML = `
         <p><strong>Name:</strong> ${fullName}</p>
         <p><strong>Address:</strong> ${address}</p>
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       // Populate favorites
-      const favoritesDetailsGrid = document.querySelector('#favorites-container');
+      const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
       favoritesDetailsGrid.innerHTML = `
         <p><strong>Favorite Color:</strong> ${favoriteColor}</p>
         <p><strong>Favorite Food:</strong> ${favoriteFood}</p>
