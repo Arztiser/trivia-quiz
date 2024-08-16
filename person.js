@@ -40,15 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <p><strong>Date of Birth:</strong> ${dob}</p>
       `;
 
-      // Function to pad the text
-      const padText = (text, length) => text.padEnd(length, ' ');
-
       // Populate favorites
       const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
       favoritesDetailsGrid.innerHTML = `
-        <p><strong>${padText('Color:', 10)}</strong> ${favoriteColor}</p>
-        <p><strong>${padText('Food:', 10)}</strong> ${favoriteFood}</p>
-        <p><strong>${padText('Hobby:', 10)}</strong> ${favoriteHobby}</p>
+        <p><strong>Color:</strong> ${favoriteColor}</p>
+        <p><strong>Food:</strong> ${favoriteFood}</p>
+        <p><strong>Hobby:</strong> ${favoriteHobby}</p>
       `;
     })
     .catch(error => {
