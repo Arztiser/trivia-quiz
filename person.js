@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Generate random favorites
       const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Magenta", "Pink", "White", "Black", "Brown", "Gray", "Silver", "Gold", "Maroon", "Teal", "Cyan", "Violet", "Bronze"];
-      const foods = ["Pizza", "Burger", "Sushi", "Pasta", "Salad", "Ice Cream", "Chocolate", "Steak", "Tacos", "Fried Chicken"];
-      const hobbies = ["Reading", "Hiking", "Gaming", "Cooking", "Traveling", "Fishing", "Drawing", "Photography", "Swimming", "Cycling"];
+      const foods = ["Pizza", "Burger", "Sushi", "Pasta", "Salad", "Ice Cream", "Chocolate", "Steak", "Tacos", "Fried Chicken", "Caviar", "Sub Sandwich", "Fish", "Chips", "Cereal", "Porkchop", "Crackers", "Cookies", "Biscuits", "Bacon", "Ham", "Chicken Nuggets", "Scrambled Eggs", "Apple", "Banana", "Peach", "Grapes", "Orange", "Durian", "Kiwi", "Cherries", "Strawberries", "Watermelon", "Popcorn", "Grilled Cheese", "Cantaloupe", "Hot Dog", "Rice"];
+      const hobbies = ["Reading", "Hiking", "Gaming", "Cooking", "Traveling", "Fishing", "Drawing", "Photography", "Swimming", "Cycling", "Writing", "Painting", "Archery", "Woodworking", "Baking", "Boxing", "Programming", "Dancing", "Gardening", "Knitting", "Sculpting", "Singing", "Surfing", "Yoga", "Wrestilng", "Parkour", "Hunting", "Sailing", "Running", "Kayaking", "Mountain Biking", "Bowling", "Fencing", "Handball", "Golfing", "Football", "Soccer", "Tennis", "Volleyball", "Paintball", "Badminton", "Geocaching"];
 
       const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
@@ -43,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Populate favorites
       const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
       favoritesDetailsGrid.innerHTML = `
-        <p><strong>Favorite Color:</strong></p><p>${favoriteColor}</p><br>
-        <p><strong>Favorite Food:</strong></p><p>${favoriteFood}</p><br>
-        <p><strong>Favorite Hobby:</strong></p><p>${favoriteHobby}</p><br>
+        <p><strong>Color:</strong></p><p>${favoriteColor}</p><br>
+        <p><strong>Food:</strong></p><p>${favoriteFood}</p><br>
+        <p><strong>Hobby:</strong></p><p>${favoriteHobby}</p><br>
       `;
     })
     .catch(error => {
