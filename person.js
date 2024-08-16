@@ -29,23 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
       // Populate person details
       const personDetailsGrid = document.querySelector('#person-container .details-grid');
       personDetailsGrid.innerHTML = `
-        <p><strong>Name:</strong> ${fullName}</p>
-        <p><strong>Address:</strong> ${address}</p>
-        <p><strong>City:</strong> ${city}</p>
-        <p><strong>State:</strong> ${state}</p>
-        <p><strong>Country:</strong> ${country}</p>
-        <p><strong>Postcode:</strong> ${postcode}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Date of Birth:</strong> ${dob}</p>
+        <p><strong>Name:</strong></p><p>${fullName}</p><br>
+        <p><strong>Address:</strong></p><p>${address}</p><br>
+        <p><strong>City:</strong></p><p>${city}</p><br>
+        <p><strong>State:</strong></p><p>${state}</p><br>
+        <p><strong>Country:</strong></p><p>${country}</p><br>
+        <p><strong>Postcode:</strong></p><p>${postcode}</p><br>
+        <p><strong>Email:</strong></p><p>${email}</p><br>
+        <p><strong>Phone:</strong></p><p>${phone}</p><br>
+        <p><strong>Date of Birth:</strong></p><p>${dob}</p><br>
       `;
 
       // Populate favorites
       const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
       favoritesDetailsGrid.innerHTML = `
-        <p><strong>Favorite Color:</strong> ${favoriteColor}</p>
-        <p><strong>Favorite Food:</strong> ${favoriteFood}</p>
-        <p><strong>Favorite Hobby:</strong> ${favoriteHobby}</p>
+        <p><strong>Favorite Color:</strong></p><p>${favoriteColor}</p><br>
+        <p><strong>Favorite Food:</strong></p><p>${favoriteFood}</p><br>
+        <p><strong>Favorite Hobby:</strong></p><p>${favoriteHobby}</p><br>
       `;
     })
     .catch(error => {
