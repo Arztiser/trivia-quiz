@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('https://randomuser.me/api/?results=9') // Fetch multiple people
+  fetch('https://randomuser.me/api/?results=1') // Fetch multiple people
     .then(response => response.json())
     .then(data => {
       const people = data.results;
