@@ -16,9 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const dob = new Date(person.dob.date).toLocaleDateString();
 
       // Generate random favorites
+      const animal = ["Dog", "Cat", "Armadillo", "Capybara", "Giraffe", "Elephant", "Fish", "Tiger", "Lion", "Bird", "Chicken", "Pig", "Goat", "Sheep", "Ram", "Wolf", "Snake", "Donkey", "Cow", "Rock", "Owl", "Bat", "Duck", "Bear", "Penguin", Ostrich", "Flamingo", "Vulture", "Fox", "Axolotl", "Frog", "Toad", "Zebra", "Seal", "Whale", "Shark", "Ape", "Gorilla", "Monkey", "Toucan", "Tortoise", "Turtle", "Buffalo", "Bison", "Yak", "Crab", "Lobster", "Narwhal", "Sloth", "Hamster", "Hippo", "Horse", "Otter", "Beaver", "Meerkat", "Hedgehog", "Lizard", "Camel", "Hyena", "Cheetah"]
       const colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Magenta", "Pink", "White", "Black", "Brown", "Gray", "Silver", "Gold", "Maroon", "Teal", "Cyan", "Violet", "Bronze"];
       const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      const foods = ["Pizza", "Burger", "Sushi", "Pasta", "Salad", "Ice Cream", "Chocolate", "Steak", "Tacos", "Fried Chicken", "Caviar", "Sub Sandwich", "Fish", "Chips", "Cereal", "Porkchop", "Crackers", "Cookies", "Biscuits", "Bacon", "Ham", "Chicken Nuggets", "Scrambled Eggs", "Apple", "Banana", "Peach", "Grapes", "Orange", "Durian", "Kiwi", "Cherries", "Strawberries", "Watermelon", "Popcorn", "Grilled Cheese", "Cantaloupe", "Hot Dog", "Rice"];
+      const foods = ["Pizza", "Burger", "Sushi", "Pasta", "Salad", "Ice Cream", "Chocolate", "Steak", "Tacos", "Fried Chicken", "Caviar", "Sub Sandwich", "Fish", "Chips", "Cereal", "Porkchop", "Crackers", "Cookies", "Biscuits", "Bacon", "Ham", "Chicken Nuggets", "Scrambled Eggs", "Apple", "Banana", "Peach", "Grapes", "Orange", "Durian", "Kiwi", "Cherries", "Strawberries", "Watermelon", "Popcorn", "Grilled Cheese", "Cantaloupe", "Hot Dog", "Rice", "Lobster"];
       const hobbies = ["Reading", "Hiking", "Gaming", "Cooking", "Traveling", "Fishing", "Drawing", "Photography", "Swimming", "Cycling", "Writing", "Painting", "Archery", "Woodworking", "Baking", "Boxing", "Programming", "Dancing", "Gardening", "Knitting", "Sculpting", "Singing", "Surfing", "Yoga", "Wrestling", "Parkour", "Hunting", "Sailing", "Running", "Kayaking", "Mountain Biking", "Bowling", "Fencing", "Handball", "Golfing", "Football", "Soccer", "Tennis", "Volleyball", "Paintball", "Badminton", "Geocaching"];
       const holidays = ["Christmas", "Easter", "Halloween", "New Years", "Thanksgiving"];
       const music = ["Pop", "Rock", "Rock & Roll", "Metal", "Country", "Classical", "Hip-Hop", "Rap", "R & B", "Gospel", "Indie", "Electronic", "Alternative", "Disco"];
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
+      const favoriteAnimal = getRandomItem(animals);
       const favoriteColor = getRandomItem(colors);
       const favoriteDay = getRandomItem(days);
       const favoriteFood = getRandomItem(foods);
@@ -58,16 +60,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const favoritesDetailsGrid = document.querySelector('#favorites-container .details-grid');
       favoritesDetailsGrid.innerHTML = `
         <div class="row">
+          <p><strong>Animal:</strong> ${favoriteAnimal}</p>
           <p><strong>Color:</strong> ${favoriteColor}</p>
           <p><strong>Day:</strong> ${favoriteDay}</p>
-          <p><strong>Food:</strong> ${favoriteFood}</p>
         </div>
         <div class="row">
+          <p><strong>Food:</strong> ${favoriteFood}</p>
           <p><strong>Hobby:</strong> ${favoriteHobby}</p>
           <p><strong>Holiday:</strong> ${favoriteHoliday}</p>
-          <p><strong>Music:</strong> ${favoriteMusic}</p>
         </div>
         <div class="row">
+          <p><strong>Music:</strong> ${favoriteMusic}</p>
           <p><strong>Season:</strong> ${favoriteSeason}</p>
         </div>
       `;
