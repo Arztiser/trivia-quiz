@@ -117,7 +117,7 @@
 
             lastRequestTime = currentTime;
 
-            if (videoCache.length === 0 || currentQuery !== randomQuery) {
+            if (videoCache.length === 0) {
                 currentQuery = queries[Math.floor(Math.random() * queries.length)];
                 fetchVideos(currentQuery);
             } else {
