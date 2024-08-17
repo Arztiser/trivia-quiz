@@ -99,10 +99,12 @@
     </div>
 
     <script>
-        const apiKey = 'AIzaSyCVip4R8JYuGRiaioz91ZI3QiATwhIHZNI'; //Replace with your YouTube API key
+        const apiKey = 'AIzaSyCVip4R8JYuGRiaioz91ZI3QiATwhIHZNI'; // Replace with your YouTube API key
         const queries = ["funny", "football", "memes", "sports", "cooking", "technology", "news", "baseball", "horror", "video games", "reviews", "random", "reaction", "cartoon", "space", "history", "science", "gaming", "humor"];
 
+        let videoCache = [];
         let lastRequestTime = 0;
+        let currentQuery = '';
 
         function getRandomYouTubeVideo() {
             const currentTime = Date.now();
@@ -115,9 +117,16 @@
 
             lastRequestTime = currentTime;
 
-            const randomQuery = queries[Math.floor(Math.random() * queries.length)];
+            if (videoCache.length === 0 || currentQuery !== randomQuery) {
+                currentQuery = queries[Math.floor(Math.random() * queries.length)];
+                fetchVideos(currentQuery);
+            } else {
+                displayRandomVideo();
+            }
+        }
 
-            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${randomQuery}&key=${apiKey}&type=video`)
+        function fetchVideos(query) {
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&q=${query}&key=${apiKey}&type=video`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok ' + response.statusText);
@@ -126,11 +135,8 @@
                 })
                 .then(data => {
                     if (data.items && data.items.length > 0) {
-                        const videoId = data.items[0].id.videoId;
-                        const videoUrl = `https://www.youtube.com/embed/${videoId}`;
-                        document.getElementById('video-container').innerHTML = `
-                            <iframe width="560" height="315" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        `;
+                        videoCache = data.items;
+                        displayRandomVideo();
                     } else {
                         document.getElementById('video-container').innerHTML = '<p>No videos found.</p>';
                     }
@@ -139,6 +145,15 @@
                     console.error('Error fetching YouTube data:', error);
                     document.getElementById('video-container').innerHTML = '<p>Error loading video. Please try again later.</p>';
                 });
+        }
+
+        function displayRandomVideo() {
+            const randomIndex = Math.floor(Math.random() * videoCache.length);
+            const videoId = videoCache[randomIndex].id.videoId;
+            const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+            document.getElementById('video-container').innerHTML = `
+                <iframe width="560" height="315" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            `;
         }
 
         document.getElementById('generate-button').addEventListener('click', getRandomYouTubeVideo);
