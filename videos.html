@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#E82B38">
     <meta name="description" content="THE Randoms Is A Website That Lets You View And Do Random Things Such As Random Quizzes, Facts, Quotes, Numbers, And Letters.">
-    <title>Random YouTube Videos - THE Randoms</title>
+    <title>Random YouTube Video - THE Randoms</title>
     <link rel="icon" type="image/png" href="./img/pfp.png">
     <link rel="stylesheet" type="text/css" href="https://therandoms.pages.dev/css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Font styling for the whole page */
         body {
             font-family: 'Jersey 10', sans-serif;
             font-size: 30px;
             text-align: center;
-            margin: 50px;
+            margin: 0;
+            padding: 0;
         }
 
         .topnav {
@@ -28,6 +28,10 @@
             justify-content: space-between;
             padding: 0 16px;
             height: 60px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         .topnav h1 {
@@ -99,32 +103,28 @@
         const queries = ["funny", "football", "memes", "sports", "cooking", "technology", "news", "baseball", "horror", "video games", "reviews", "random", "reaction"];
 
         function getRandomYouTubeVideo() {
-            // Iterate over each category
-            const videoContainer = document.getElementById('video-container');
-            videoContainer.innerHTML = ""; // Clear previous videos
+            // Pick a random query
+            const randomQuery = queries[Math.floor(Math.random() * queries.length)];
 
-            queries.forEach(query => {
-                fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${query}&key=${apiKey}&type=video`)
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.items && data.items.length > 0) {
-                            const videoId = data.items[0].id.videoId;
-                            const videoUrl = `https://www.youtube.com/embed/${videoId}`;
-                            videoContainer.innerHTML += `
-                                <div style="margin-bottom: 20px;">
-                                    <h3>${query.charAt(0).toUpperCase() + query.slice(1)} Video</h3>
-                                    <iframe width="560" height="315" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                </div>
-                            `;
-                        } else {
-                            videoContainer.innerHTML += `<p>No videos found for ${query}.</p>`;
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching YouTube data:', error);
-                        videoContainer.innerHTML += `<p>Error loading video for ${query}. Please try again later.</p>`;
-                    });
-            });
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${randomQuery}&key=${apiKey}&type=video`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.items && data.items.length > 0) {
+                        // Select a random video from the fetched results
+                        const randomIndex = Math.floor(Math.random() * data.items.length);
+                        const videoId = data.items[randomIndex].id.videoId;
+                        const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+                        document.getElementById('video-container').innerHTML = `
+                            <iframe width="560" height="315" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        `;
+                    } else {
+                        document.getElementById('video-container').innerHTML = '<p>No videos found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching YouTube data:', error);
+                    document.getElementById('video-container').innerHTML = '<p>Error loading video. Please try again later.</p>';
+                });
         }
 
         document.getElementById('generate-button').addEventListener('click', getRandomYouTubeVideo);
