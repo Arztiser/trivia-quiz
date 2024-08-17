@@ -12,40 +12,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
+        /* Font styling for the whole page */
         body {
             font-family: 'Jersey 10', sans-serif;
-            font-size: 30px;
-            text-align: center;
-            margin: 0;
-            padding: 0;
+            font-size: 30px; /* Set font size to thirty */
         }
-
+        
         .topnav {
             overflow: hidden;
             background-color: #333;
             display: flex;
-            align-items: center;
+            align-items: center; /* Vertically centers items */
             justify-content: space-between;
             padding: 0 16px;
-            height: 60px;
-            position: sticky;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
+            height: 60px; /* Set a fixed height for the nav bar */
         }
 
         .topnav h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 24px; /* Adjust logo font size */
         }
 
         .topnav a {
-            display: inline-block;
+            display: inline-block; /* Make sure links are inline */
             color: #f2f2f2;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 18px; /* Adjust link font size */
         }
 
         .topnav a:hover {
@@ -59,20 +53,16 @@
         }
 
         .logo {
-            color: inherit;
+            color: inherit; /* Keep the color as it was */
             text-decoration: none;
         }
 
         .logo:hover {
-            background-color: transparent;
+            background-color: transparent; /* Set the background color to transparent on hover */
         }
 
         .container {
             margin: 20px;
-        }
-
-        #video-container {
-            margin-top: 20px;
         }
     </style>
 </head>
@@ -81,7 +71,7 @@
         <div class="topnav">
             <h1><a href="#header" class="logo">THE Randoms</a></h1>
             <div class="topnav-right">
-                <a href="index.html">Home</a>
+                <a href="index.html" class="active">Home</a>
                 <a href="facts.html">Facts</a>
                 <a href="jokes.html">Jokes</a>
                 <a href="letters.html">Letters</a>
