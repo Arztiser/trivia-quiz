@@ -23,13 +23,16 @@
     <script>
         const apiKey = 'AIzaSyBH6G8Uou-uchS8Bww9qFIOaN11U0H_OR8'; // Replace with your YouTube API key
         const query = "funny"; // You can modify this query to any keyword you like
+        const maxResults = 1000; // Number of results to fetch
 
         document.getElementById('generate-button').addEventListener('click', () => {
-            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${query}&key=${apiKey}&type=video`)
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&key=${apiKey}&type=video`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.items && data.items.length > 0) {
-                        const videoId = data.items[0].id.videoId;
+                        // Select a random video from the fetched results
+                        const randomIndex = Math.floor(Math.random() * data.items.length);
+                        const videoId = data.items[randomIndex].id.videoId;
                         const videoUrl = `https://www.youtube.com/embed/${videoId}`;
                         document.getElementById('video-container').innerHTML = `
                             <iframe width="560" height="315" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
