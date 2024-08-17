@@ -26,7 +26,7 @@
         const maxResults = 1000; // Number of results to fetch
 
         document.getElementById('generate-button').addEventListener('click', () => {
-            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&key=${apiKey}&type=video`)
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${queries}&key=${apiKey}&type=video`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.items && data.items.length > 0) {
