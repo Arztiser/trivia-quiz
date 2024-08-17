@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random YouTube Video Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #video-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random YouTube Video Generator</h1>
+    <button id="generate-button">Generate Random Video</button>
+    <div id="video-container"></div>
+
+    <script>
+        const apiKey = 'AIzaSyBH6G8Uou-uchS8Bww9qFIOaN11U0H_OR8'; // Replace with your YouTube API key
+        const query = "funny"; // You can modify this query to any keyword you like
+
+        document.getElementById('generate-button').addEventListener('click', () => {
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${query}&key=${apiKey}&type=video`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.items && data.items.length > 0) {
+                        const videoId = data.items[0].id.videoId;
+                        const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+                        document.getElementById('video-container').innerHTML = `
+                            <iframe width="560" height="315" src="${videoUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        `;
+                    } else {
+                        document.getElementById('video-container').innerHTML = '<p>No videos found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching YouTube data:', error);
+                    document.getElementById('video-container').innerHTML = '<p>Error loading video. Please try again later.</p>';
+                });
+        });
+    </script>
+</body>
+</html>
