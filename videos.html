@@ -103,14 +103,17 @@
         const queries = ["funny", "football", "memes", "sports", "cooking", "technology", "news", "baseball", "horror", "video games", "reviews", "random", "reaction", "cartoon", "space", "history", "science", "gaming", "humor"];
 
         function getRandomYouTubeVideo() {
-            // Pick a random query
             const randomQuery = queries[Math.floor(Math.random() * queries.length)];
 
             fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${randomQuery}&key=${apiKey}&type=video`)
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     if (data.items && data.items.length > 0) {
-                        // Select a random video from the fetched results
                         const randomIndex = Math.floor(Math.random() * data.items.length);
                         const videoId = data.items[randomIndex].id.videoId;
                         const videoUrl = `https://www.youtube.com/embed/${videoId}`;
