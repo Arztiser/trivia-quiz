@@ -23,7 +23,7 @@
     <script>
         const apiKey = 'AIzaSyBH6G8Uou-uchS8Bww9qFIOaN11U0H_OR8'; // Replace with your YouTube API key
         const queries = ["funny", "football", "memes", "sports", "cooking", "technology", "news", "baseball", "horror", "video games", "reviews", "random", "reaction"]; // You can modify this query to any keyword you like
-        const maxResults = 1000; // Number of results to fetch
+        const maxResults = 10000000; // Number of results to fetch
 
         document.getElementById('generate-button').addEventListener('click', () => {
             fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${queries}&key=${apiKey}&type=video`)
