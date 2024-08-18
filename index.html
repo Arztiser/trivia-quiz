@@ -15,31 +15,33 @@
         /* Font styling for the whole page */
         body {
             font-family: 'Jersey 10', sans-serif;
-            font-size: 30px; /* Set font size to thirty */
+            font-size: 30px;
+            margin: 0;
+            padding: 0;
         }
         
         .topnav {
             overflow: hidden;
             background-color: #333;
             display: flex;
-            align-items: center; /* Vertically centers items */
+            align-items: center;
             justify-content: space-between;
             padding: 0 16px;
-            height: 60px; /* Set a fixed height for the nav bar */
+            height: 60px;
         }
 
         .topnav h1 {
             margin: 0;
-            font-size: 24px; /* Adjust logo font size */
+            font-size: 24px;
         }
 
         .topnav a {
-            display: inline-block; /* Make sure links are inline */
+            display: inline-block;
             color: #f2f2f2;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-            font-size: 18px; /* Adjust link font size */
+            font-size: 18px;
         }
 
         .topnav a:hover {
@@ -53,16 +55,32 @@
         }
 
         .logo {
-            color: inherit; /* Keep the color as it was */
+            color: inherit;
             text-decoration: none;
         }
 
         .logo:hover {
-            background-color: transparent; /* Set the background color to transparent on hover */
+            background-color: transparent;
         }
 
         .container {
             margin: 20px;
+        }
+
+        .content {
+            text-align: center; /* Center-aligns the content */
+            margin: 50px auto; /* Adds space at the top and centers the content horizontally */
+            max-width: 800px; /* Optional: Set a max-width to control the width of the content */
+        }
+
+        .content h1 {
+            font-size: 36px; /* Increase the font size for the header */
+            margin-bottom: 20px; /* Space between the header and the paragraph */
+        }
+
+        .content p {
+            font-size: 24px; /* Font size for the text */
+            line-height: 1.5; /* Improves readability */
         }
     </style>
 </head>
@@ -71,7 +89,7 @@
         <div class="topnav">
             <h1><a href="#header" class="logo">THE Randoms</a></h1>
             <div class="topnav-right">
-                <a href="index.html"class="active">Home</a>
+                <a href="index.html" class="active">Home</a>
                 <a href="facts.html">Facts</a>
                 <a href="jokes.html">Jokes</a>
                 <a href="letters.html">Letters</a>
