@@ -12,44 +12,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
+        /* Font styling for the whole page */
         body {
             font-family: 'Jersey 10', sans-serif;
-            font-size: 30px;
-            text-align: center; /* Center-aligns all text inside the body */
-            margin: 0; /* Removes default margin */
-            padding: 0; /* Removes default padding */
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centers content horizontally */
-            justify-content: center; /* Centers content vertically */
-            height: 100vh; /* Makes the body take the full height of the viewport */
+            font-size: 30px; /* Set font size to thirty */
         }
-
+        
         .topnav {
-            width: 100%; /* Make the nav take up the full width */
             overflow: hidden;
             background-color: #333;
             display: flex;
-            align-items: center;
+            align-items: center; /* Vertically centers items */
             justify-content: space-between;
             padding: 0 16px;
-            height: 60px;
-            position: fixed; /* Keeps the nav at the top of the page */
-            top: 0;
+            height: 60px; /* Set a fixed height for the nav bar */
         }
 
         .topnav h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 24px; /* Adjust logo font size */
         }
 
         .topnav a {
-            display: inline-block;
+            display: inline-block; /* Make sure links are inline */
             color: #f2f2f2;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 18px; /* Adjust link font size */
         }
 
         .topnav a:hover {
@@ -63,36 +53,26 @@
         }
 
         .logo {
-            color: inherit;
+            color: inherit; /* Keep the color as it was */
             text-decoration: none;
         }
 
         .logo:hover {
-            background-color: transparent;
+            background-color: transparent; /* Set the background color to transparent on hover */
         }
 
-        .content {
-            margin-top: 80px; /* Adjust margin to avoid overlap with fixed nav */
-        }
-
-        .content h1 {
-            font-size: 36px; /* Larger font size for "Home" */
-            margin-bottom: 20px;
-        }
-
-        .content p {
-            font-size: 24px; /* Font size for the text below "Home" */
-            line-height: 1.5; /* Improves readability */
+        .container {
+            margin: 20px;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="topnav">
-            <h1><a href="index.html" class="logo">THE Randoms</a></h1>
+            <h1><a href="#header" class="logo">THE Randoms</a></h1>
             <div class="topnav-right">
-                <a href="index.html" class="active">Home</a>
-                <a href="facts.html">Facts</a>
+                <a href="index.html">Home</a>
+                <a href="facts.html"class="active">Facts</a>
                 <a href="jokes.html">Jokes</a>
                 <a href="letters.html">Letters</a>
                 <a href="memes.html">Memes</a>
