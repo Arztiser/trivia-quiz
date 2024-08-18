@@ -14,31 +14,42 @@
     <style>
         body {
             font-family: 'Jersey 10', sans-serif;
-            font-size: 30px; /* Set font size to thirty */
+            font-size: 30px;
+            text-align: center; /* Center-aligns all text inside the body */
+            margin: 0; /* Removes default margin */
+            padding: 0; /* Removes default padding */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centers content horizontally */
+            justify-content: center; /* Centers content vertically */
+            height: 100vh; /* Makes the body take the full height of the viewport */
         }
-        
+
         .topnav {
+            width: 100%; /* Make the nav take up the full width */
             overflow: hidden;
             background-color: #333;
             display: flex;
-            align-items: center; /* Vertically centers items */
+            align-items: center;
             justify-content: space-between;
             padding: 0 16px;
-            height: 60px; /* Set a fixed height for the nav bar */
+            height: 60px;
+            position: fixed; /* Keeps the nav at the top of the page */
+            top: 0;
         }
 
         .topnav h1 {
             margin: 0;
-            font-size: 24px; /* Adjust logo font size */
+            font-size: 24px;
         }
 
         .topnav a {
-            display: inline-block; /* Make sure links are inline */
+            display: inline-block;
             color: #f2f2f2;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-            font-size: 18px; /* Adjust link font size */
+            font-size: 18px;
         }
 
         .topnav a:hover {
@@ -52,31 +63,26 @@
         }
 
         .logo {
-            color: inherit; /* Keep the color as it was */
+            color: inherit;
             text-decoration: none;
         }
 
         .logo:hover {
-            background-color: transparent; /* Set the background color to transparent on hover */
+            background-color: transparent;
         }
 
-        .container {
-            margin: 20px;
+        .content {
+            margin-top: 80px; /* Adjust margin to avoid overlap with fixed nav */
         }
 
-        #submit-btn {
-            margin-top: 15px;
-            padding: 8px 16px;
-            font-size: 16px;
-            background-color: #E82B38;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .content h1 {
+            font-size: 36px; /* Larger font size for "Home" */
+            margin-bottom: 20px;
         }
 
-        #submit-btn:hover {
-            background-color: #d12530;
+        .content p {
+            font-size: 24px; /* Font size for the text below "Home" */
+            line-height: 1.5; /* Improves readability */
         }
     </style>
 </head>
@@ -98,12 +104,9 @@
         </div>
     </header>
 
-    <div class="container">
-        <h1>Random Quiz</h1>
-        <div id="quiz-container"></div>
-        <button id="submit-btn">Submit</button>
-        <div id="result"></div>
+    <div class="content">
+        <h1>Home</h1>
+        <p>Welcome to THE Randoms, A Website Full Of Random Things To Explore And Enjoy. If You Found This Website Randomly, Welcome! If You Found This Website Through A Random Website Generator, Welcome! If You Found This From Any Other Source, Welcome! Now Come Along On This Wacky, Fun, And Random Ride To Explore All Of THE Randoms Of The World And The Internet.</p>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
