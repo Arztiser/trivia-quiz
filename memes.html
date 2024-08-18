@@ -65,7 +65,7 @@
 
         .container {
             margin: 20px;
-            text-align: center; /* Center the content inside the container */
+            text-align: center;
         }
 
         #meme-container {
@@ -139,10 +139,11 @@
                 });
         }
 
-        document.getElementById('generate-button').addEventListener('click', getRandomMeme);
+        // Fetch a meme when the page loads
+        window.onload = getRandomMeme;
 
-        // Fetch an initial meme on page load
-        getRandomMeme();
+        // Fetch a meme when the button is clicked
+        document.getElementById('generate-button').addEventListener('click', getRandomMeme);
     </script>
 </body>
 
