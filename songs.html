@@ -118,7 +118,7 @@
 
     <div class="container">
         <h1>Random Song</h1>
-        <button id="generate-button">Play Random Song</button>
+        <button id="generate-button">Load Random Song</button>
         <div id="song-container">
             <audio id="audio-player" controls></audio>
         </div>
@@ -140,10 +140,10 @@
             // Set the audio source to the selected song
             const audioPlayer = document.getElementById('audio-player');
             audioPlayer.src = randomSong;
-            audioPlayer.play();
+            audioPlayer.load(); // Load the song into the player
         }
 
-        // Play a random song when the button is clicked
+        // Load a random song when the button is clicked
         document.getElementById('generate-button').addEventListener('click', getRandomSong);
     </script>
 </body>
