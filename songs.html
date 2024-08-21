@@ -126,12 +126,8 @@
     </div>
 
     <script>
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
+        // Track the last played song
+        let lastSongIndex = -1;
 
         function getRandomSong() {
             // Array of your audio files
@@ -144,11 +140,15 @@
                 // Add more songs here
             ];
 
-            // Shuffle the array to increase randomness
-            shuffleArray(songs);
+            // Ensure we get a different song each time
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * songs.length);
+            } while (randomIndex === lastSongIndex);
 
-            // Select a random song from the shuffled array
-            const randomIndex = Math.floor(Math.random() * songs.length);
+            lastSongIndex = randomIndex;
+
+            // Select a random song from the array
             const randomSong = songs[randomIndex];
 
             // Add a random query parameter to avoid caching issues
