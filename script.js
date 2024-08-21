@@ -78,7 +78,7 @@ function checkAnswers() {
     });
 
     const resultContainer = document.getElementById('result');
-    resultContainer.textContent = `Your score: ${score} out of 10`;
+    resultContainer.textContent = `Score: ${score} Out Of 10`;
 }
 
 document.getElementById('submit-btn').addEventListener('click', checkAnswers);
