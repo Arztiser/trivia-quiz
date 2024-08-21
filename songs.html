@@ -141,9 +141,12 @@
             const randomIndex = Math.floor(Math.random() * songs.length);
             const randomSong = songs[randomIndex];
 
-            // Set the audio source to the selected song
+            // Generate a unique query parameter to avoid caching issues
+            const timestamp = new Date().getTime();
             const audioPlayer = document.getElementById('audio-player');
-            audioPlayer.src = randomSong;
+
+            // Set the audio source to the selected song with a unique query parameter
+            audioPlayer.src = randomSong + '?t=' + timestamp;
             audioPlayer.load(); // Load the song into the player
         }
 
