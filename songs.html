@@ -111,7 +111,7 @@
                 <a href="people.html">People</a>
                 <a href="quizzes.html">Quizzes</a>
                 <a href="quotes.html">Quotes</a>
-                <a href="songs.html"class="active">Songs</a>
+                <a href="songs.html" class="active">Songs</a>
                 <a href="videos.html">Videos</a>
             </div>
         </div>
@@ -131,9 +131,9 @@
             const songs = [
                 'audio/Crazy_Hazy_Dream.mp3',
                 'audio/Name_Song.mp3',
-                'audio/Arbitrary Awareness.wav',
-                'audio/Eternal Enthusiasm.wav',
-                'audio/Amusing Adventure.wav',
+                'audio/Arbitrary_Awareness.wav',
+                'audio/Eternal_Enthusiasm.wav',
+                'audio/Amusing_Adventure.wav',
                 // Add more songs here
             ];
 
@@ -146,6 +146,9 @@
             audioPlayer.src = randomSong;
             audioPlayer.load(); // Load the song into the player
         }
+
+        // Load a random song when the page loads
+        window.onload = getRandomSong;
 
         // Load a random song when the button is clicked
         document.getElementById('generate-button').addEventListener('click', getRandomSong);
