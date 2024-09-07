@@ -110,10 +110,10 @@
             window.addEventListener('load', function() {
                 navigator.serviceWorker.register('/server-worker.js')  // Ensure the path matches where the service worker is hosted
                 .then(function(registration) {
-                    console.log('Service Worker registered with scope:', registration.scope);
+                    console.log('Service Worker Registered With Scope:', registration.scope);
                 })
                 .catch(function(error) {
-                    console.log('Service Worker registration failed:', error);
+                    console.log('Service Worker Registration Failed:', error);
                 });
             });
         }
