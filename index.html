@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="manifest" href="/manifest.json"> <!-- Add this line -->
+    <link rel="manifest" href="/manifest.json">
     <style>
         /* Font styling for the whole page */
         body {
@@ -103,5 +103,20 @@
         <h1>Home</h1>
         <p>Welcome to THE Randoms, A Website Full Of Random Things To Explore And Enjoy. If You Found This Website Randomly, Welcome! If You Found This Website Through A Random Website Generator, Welcome! If You Found This From Any Other Source, Welcome! Now Come Along On This Wacky, Fun, And Random Ride To Explore All Of THE Randoms Of The World And The Internet.</p>
     </div>
+
+    <!-- Service Worker Registration Script -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/server-worker.js')  // Ensure the path matches where the service worker is hosted
+                .then(function(registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(function(error) {
+                    console.log('Service Worker registration failed:', error);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
