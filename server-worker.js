@@ -18,6 +18,8 @@ const ASSETS_TO_CACHE = [
   '/videos.html',
   '/css/styles.css',
   '/img/pfp.png',
+  '/img/pofp.png',
+  '/img/prpf.png',
   'https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap',
 ];
 
