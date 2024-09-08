@@ -11,12 +11,12 @@
   "theme_color": "#E82B38",
   "icons": [
     {
-      "src": "./img/prfp.png",
+      "src": "/img/prfp.png",  // Corrected path
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "./img/pofp.png",
+      "src": "/img/pofp.png",  // Corrected path
       "sizes": "512x512",
       "type": "image/png"
     }
@@ -43,54 +43,54 @@
       "url": "/letters.html",
       "icons": [{ "src": "/img/prfp.png", "sizes": "192x192", "type": "image/png" }]
     },
-     {
+    {
       "name": "Memes",
       "short_name": "Memes",
       "description": "View Random Memes",
       "url": "/memes.html",
       "icons": [{ "src": "/img/prfp.png", "sizes": "192x192", "type": "image/png" }]
-     },
-     {
+    },
+    {
       "name": "Numbers",
-      "short_name": "Memes",
+      "short_name": "Numbers",
       "description": "View Random Numbers",
       "url": "/numbers.html",
       "icons": [{ "src": "/img/prfp.png", "sizes": "192x192", "type": "image/png" }]
-     },
-     {
+    },
+    {
       "name": "People",
       "short_name": "People",
       "description": "View Random People",
       "url": "/people.html",
       "icons": [{ "src": "/img/prfp.png", "sizes": "192x192", "type": "image/png" }]
-     },
-     {
+    },
+    {
       "name": "Quizzes",
       "short_name": "Quizzes",
       "description": "Do Random Quizzes",
       "url": "/quizzes.html",
       "icons": [{ "src": "/img/prfp.png", "sizes": "192x192", "type": "image/png" }]
-     },
-     {
+    },
+    {
       "name": "Quotes",
       "short_name": "Quotes",
       "description": "View Random Quotes",
       "url": "/quotes.html",
       "icons": [{ "src": "/img/prfp.png", "sizes": "192x192", "type": "image/png" }]
-     },
-     {
+    },
+    {
       "name": "Songs",
       "short_name": "Songs",
       "description": "Listen To Random Songs",
       "url": "/songs.html",
       "icons": [{ "src": "/img/prfp.png", "sizes": "192x192", "type": "image/png" }]
-     },
-     {
+    },
+    {
       "name": "Videos",
-      "short_name": "Vidoes",
+      "short_name": "Videos",  // Corrected typo
       "description": "View Random Videos",
       "url": "/videos.html",
       "icons": [{ "src": "/img/prfp.png", "sizes": "192x192", "type": "image/png" }]
-     },
+    }
   ]
 }
