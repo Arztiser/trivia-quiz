@@ -59,23 +59,26 @@
             display: flex;
         }
 
+        /* Mobile menu button */
+        .menu-icon {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: #f2f2f2;
+        }
+
         /* Responsive styling for smaller screens */
         @media screen and (max-width: 768px) {
             .topnav {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-wrap: wrap;
                 height: auto;
             }
 
-            .topnav h1 {
-                font-size: 24px;
-                margin-bottom: 10px;
-            }
-
             .topnav-right {
+                display: none; /* Hide the menu by default */
+                width: 100%; /* Full width for menu on mobile */
                 flex-direction: column;
-                width: 100%;
-                text-align: left;
+                background-color: #333; /* Keep background color */
             }
 
             .topnav-right a {
@@ -84,33 +87,24 @@
                 padding: 12px;
                 border-top: 1px solid #444;
             }
-        }
 
-        @media screen and (max-width: 480px) {
-            .topnav h1 {
-                font-size: 20px;
-            }
-
-            .topnav a {
-                font-size: 16px;
-                padding: 10px;
-            }
-
-            .topnav-right a {
-                padding: 10px;
+            .menu-icon {
+                display: block;
             }
         }
 
-        /* Adding smooth transitions for hover */
-        .topnav a {
-            transition: background-color 0.3s ease, color 0.3s ease;
+        /* Display the menu when clicked */
+        .topnav.responsive .topnav-right {
+            display: flex;
         }
+
     </style>
 </head>
 <body>
     <header>
-        <div class="topnav">
+        <div class="topnav" id="myTopnav">
             <h1><a href="#header" class="logo">THE Randoms</a></h1>
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
             <div class="topnav-right">
                 <a href="index.html" class="active">Home</a>
                 <a href="facts.html">Facts</a>
@@ -132,5 +126,16 @@
         <h1>Home</h1>
         <p>Welcome to THE Randoms, A Website Full Of Random Things To Explore And Enjoy. If You Found This Website Randomly, Welcome! Now Come Along On This Wacky, Fun, And Random Ride To Explore All Of THE Randoms Of The World And The Internet.</p>
     </div>
+
+    <script>
+        function toggleMenu() {
+            var topnav = document.getElementById("myTopnav");
+            if (topnav.className === "topnav") {
+                topnav.className += " responsive";
+            } else {
+                topnav.className = "topnav";
+            }
+        }
+    </script>
 </body>
 </html>
