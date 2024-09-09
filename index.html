@@ -7,37 +7,41 @@
     <meta name="description" content="THE Randoms Is A Website That Lets You View And Do Random Things Such As Random Quizzes, Facts, Quotes, Numbers, And Letters.">
     <title>THE Randoms</title>
     <link rel="icon" type="image/png" href="./img/pfp.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" type="text/css" href="https://therandoms.pages.dev/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="192x192" href="/img/prfp.png">
     <style>
         /* Font styling for the whole page */
         body {
             font-family: 'Jersey 10', sans-serif;
-            font-size: 30px;
-            margin: 0;
-            padding: 0;
+            font-size: 30px; /* Set font size to thirty */
         }
-
+        
         .topnav {
             overflow: hidden;
             background-color: #333;
             display: flex;
-            align-items: center;
+            align-items: center; /* Vertically centers items */
             justify-content: space-between;
             padding: 0 16px;
-            height: 60px;
+            height: 60px; /* Set a fixed height for the nav bar */
         }
 
         .topnav h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 24px; /* Adjust logo font size */
         }
 
         .topnav a {
+            display: inline-block; /* Make sure links are inline */
             color: #f2f2f2;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 18px; /* Adjust link font size */
         }
 
         .topnav a:hover {
@@ -51,60 +55,35 @@
         }
 
         .logo {
+            color: inherit; /* Keep the color as it was */
             text-decoration: none;
-            color: inherit;
         }
 
-        .topnav-right {
-            display: flex;
+        .logo:hover {
+            background-color: transparent; /* Set the background color to transparent on hover */
         }
 
-        /* Mobile menu button */
-        .menu-icon {
-            display: none;
-            font-size: 26px;
-            cursor: pointer;
-            color: #f2f2f2;
+        .container {
+            margin: 20px;
         }
 
-        /* Responsive styling for smaller screens */
-        @media screen and (max-width: 768px) {
-            .topnav {
-                flex-wrap: wrap;
-                height: auto;
-            }
-
-            .topnav-right {
-                display: none; /* Hide the menu by default */
-                width: 100%; /* Full width for menu on mobile */
-                flex-direction: column;
-                background-color: #333; /* Keep background color */
-            }
-
-            .topnav-right a {
-                width: 100%;
-                text-align: left;
-                padding: 12px;
-                border-top: 1px solid #444;
-            }
-
-            .menu-icon {
-                display: block;
-            }
+        .content {
+            text-align: center; /* Center-aligns the content */
         }
 
-        /* Display the menu when clicked */
-        .topnav.responsive .topnav-right {
-            display: flex;
+        .content h1 {
+            margin-bottom: 20px; /* Space between the header and the paragraph */
         }
 
+        .content p {
+            line-height: 1.5; /* Improves readability */
+        }
     </style>
 </head>
 <body>
     <header>
-        <div class="topnav" id="myTopnav">
+        <div class="topnav">
             <h1><a href="#header" class="logo">THE Randoms</a></h1>
-            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
             <div class="topnav-right">
                 <a href="index.html" class="active">Home</a>
                 <a href="facts.html">Facts</a>
@@ -124,18 +103,7 @@
 
     <div class="content">
         <h1>Home</h1>
-        <p>Welcome to THE Randoms, A Website Full Of Random Things To Explore And Enjoy. If You Found This Website Randomly, Welcome! Now Come Along On This Wacky, Fun, And Random Ride To Explore All Of THE Randoms Of The World And The Internet.</p>
+        <p>Welcome to THE Randoms, A Website Full Of Random Things To Explore And Enjoy. If You Found This Website Randomly, Welcome! If You Found This Website Through A Random Website Generator, Welcome! If You Found This From Any Other Source, Welcome! Now Come Along On This Wacky, Fun, And Random Ride To Explore All Of THE Randoms Of The World And The Internet.</p>
     </div>
-
-    <script>
-        function toggleMenu() {
-            var topnav = document.getElementById("myTopnav");
-            if (topnav.className === "topnav") {
-                topnav.className += " responsive";
-            } else {
-                topnav.className = "topnav";
-            }
-        }
-    </script>
 </body>
 </html>
