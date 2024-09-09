@@ -15,6 +15,8 @@
         body {
             font-family: 'Jersey 10', sans-serif;
             font-size: 30px;
+            margin: 0;
+            padding: 0;
         }
 
         .topnav {
@@ -32,6 +34,17 @@
             font-size: 24px;
         }
 
+        .topnav .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .topnav-right {
+            display: flex;
+        }
+
         .topnav a {
             display: inline-block;
             color: #f2f2f2;
@@ -39,6 +52,7 @@
             padding: 14px 16px;
             text-decoration: none;
             font-size: 18px;
+            white-space: nowrap;
         }
 
         .topnav a:hover {
@@ -60,18 +74,42 @@
             background-color: transparent;
         }
 
+        @media screen and (max-width: 768px) {
+            .topnav-right {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #333;
+                width: 100%;
+            }
+
+            .topnav-right a {
+                text-align: left;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            .topnav .menu-icon {
+                display: block;
+            }
+
+            .topnav.active .topnav-right {
+                display: flex;
+            }
+        }
+
         .container {
             margin: 20px;
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
 
-        #person-container, #favorites-container {
-            width: 48%;
-        }
-
-        #favorites-container {
-            text-align: right;
+        #person-container {
+            width: 100%;
+            margin-bottom: 20px;
         }
 
         .details-grid p {
@@ -87,14 +125,15 @@
 <body>
     <header>
         <div class="topnav">
-            <h1><a href="#header" class="logo">THE Randoms</a></h1>
+            <h1><a href="index.html" class="logo">THE Randoms</a></h1>
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
             <div class="topnav-right">
                 <a href="index.html">Home</a>
                 <a href="facts.html">Facts</a>
                 <a href="jokes.html">Jokes</a>
                 <a href="letters.html">Letters</a>
                 <a href="memes.html">Memes</a>
-                <a href="nfl.html"class="active">NFL</a>
+                <a href="nfl.html" class="active">NFL</a>
                 <a href="numbers.html">Numbers</a>
                 <a href="people.html">People</a>
                 <a href="quizzes.html">Quizzes</a>
@@ -112,6 +151,13 @@
                 <!-- NFL details will be loaded here -->
             </div>
         </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.topnav').classList.toggle('active');
+        }
+    </script>
     <script src="nfl.js"></script>
 </body>
 </html>
