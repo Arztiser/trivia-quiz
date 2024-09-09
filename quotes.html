@@ -12,10 +12,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jersey+10:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        /* Font styling for the whole page */
         body {
             font-family: 'Jersey 10', sans-serif;
             font-size: 30px; /* Set font size to thirty */
+            margin: 0;
+            padding: 0;
         }
         
         .topnav {
@@ -26,11 +27,23 @@
             justify-content: space-between;
             padding: 0 16px;
             height: 60px; /* Set a fixed height for the nav bar */
+            position: relative;
         }
 
         .topnav h1 {
             margin: 0;
             font-size: 24px; /* Adjust logo font size */
+        }
+
+        .topnav .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .topnav-right {
+            display: flex;
         }
 
         .topnav a {
@@ -40,6 +53,7 @@
             padding: 14px 16px;
             text-decoration: none;
             font-size: 18px; /* Adjust link font size */
+            white-space: nowrap;
         }
 
         .topnav a:hover {
@@ -64,12 +78,39 @@
         .container {
             margin: 20px;
         }
+
+        @media screen and (max-width: 768px) {
+            .topnav-right {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #333;
+                width: 100%;
+            }
+
+            .topnav-right a {
+                text-align: left;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            .topnav.active .topnav-right {
+                display: flex;
+            }
+
+            .topnav .menu-icon {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="topnav">
-            <h1><a href="#header" class="logo">THE Randoms</a></h1>
+            <h1><a href="index.html" class="logo">THE Randoms</a></h1>
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
             <div class="topnav-right">
                 <a href="index.html">Home</a>
                 <a href="facts.html">Facts</a>
@@ -80,7 +121,7 @@
                 <a href="numbers.html">Numbers</a>
                 <a href="people.html">People</a>
                 <a href="quizzes.html">Quizzes</a>
-                <a href="quotes.html"class="active">Quotes</a>
+                <a href="quotes.html" class="active">Quotes</a>
                 <a href="songs.html">Songs</a>
                 <a href="videos.html">Videos</a>
             </div>
@@ -93,6 +134,12 @@
             <!-- Random quotes will be loaded here -->
         </div>
     </div>
+    
+    <script>
+        function toggleMenu() {
+            document.querySelector('.topnav').classList.toggle('active');
+        }
+    </script>
     <script src="quotes.js"></script>
 </body>
 </html>
