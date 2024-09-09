@@ -7,7 +7,7 @@
   "orientation": "any",
   "scope": "/",
   "short_name": "THE Randoms",
-  "start_url": "/",
+  "start_url": "/?source=pwa",
   "theme_color": "#E82B38",
   "icons": [
     {
@@ -19,6 +19,14 @@
       "src": "/img/pofp.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/img/pofp-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }
