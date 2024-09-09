@@ -37,6 +37,17 @@
             font-size: 24px;
         }
 
+        .topnav .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .topnav-right {
+            display: flex;
+        }
+
         .topnav a {
             display: inline-block;
             color: #f2f2f2;
@@ -44,7 +55,7 @@
             padding: 14px 16px;
             text-decoration: none;
             font-size: 18px;
-            white-space: nowrap; /* Prevent the links from wrapping */
+            white-space: nowrap;
         }
 
         .topnav a:hover {
@@ -66,6 +77,33 @@
             background-color: transparent;
         }
 
+        /* Hide the menu on mobile */
+        @media screen and (max-width: 768px) {
+            .topnav-right {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #333;
+                width: 100%;
+            }
+
+            .topnav-right a {
+                text-align: left;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            .topnav .menu-icon {
+                display: block;
+            }
+
+            .topnav.active .topnav-right {
+                display: flex;
+            }
+        }
+
         .container {
             margin: 20px;
         }
@@ -81,35 +119,13 @@
         .content p {
             line-height: 1.5;
         }
-
-        /* Responsive adjustments for smaller screens */
-        @media screen and (max-width: 768px) {
-            .topnav a {
-                padding: 8px 10px; /* Reduce padding for mobile */
-                font-size: 14px; /* Smaller font size for links */
-            }
-
-            .topnav h1 {
-                font-size: 18px; /* Reduce logo size on smaller screens */
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .topnav a {
-                padding: 6px 8px; /* Further reduce padding */
-                font-size: 12px; /* Smaller font size for links on smallest screens */
-            }
-
-            .topnav h1 {
-                font-size: 16px; /* Reduce logo size on smaller screens */
-            }
-        }
     </style>
 </head>
 <body>
     <header>
         <div class="topnav">
             <h1><a href="#header" class="logo">THE Randoms</a></h1>
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
             <div class="topnav-right">
                 <a href="index.html" class="active">Home</a>
                 <a href="facts.html">Facts</a>
@@ -131,5 +147,11 @@
         <h1>Home</h1>
         <p>Welcome to THE Randoms, A Website Full Of Random Things To Explore And Enjoy. If You Found This Website Randomly, Welcome! Now Come Along On This Wacky, Fun, And Random Ride To Explore All Of THE Randoms Of The World And The Internet.</p>
     </div>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.topnav').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
