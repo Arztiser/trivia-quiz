@@ -57,38 +57,53 @@
 
         .topnav-right {
             display: flex;
-            flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-        }
-
-        .topnav a {
-            flex: 1;
-            text-align: center;
-            padding: 14px 8px;
         }
 
         /* Responsive styling for smaller screens */
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 768px) {
             .topnav {
                 flex-direction: column;
-                height: auto;
                 align-items: flex-start;
+                height: auto;
             }
 
             .topnav h1 {
-                font-size: 20px;
-                padding: 10px 0;
+                font-size: 24px;
+                margin-bottom: 10px;
             }
 
             .topnav-right {
                 flex-direction: column;
                 width: 100%;
+                text-align: left;
+            }
+
+            .topnav-right a {
+                width: 100%;
+                text-align: left;
+                padding: 12px;
+                border-top: 1px solid #444;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .topnav h1 {
+                font-size: 20px;
             }
 
             .topnav a {
-                padding: 12px;
-                width: 100%;
-                text-align: left;
+                font-size: 16px;
+                padding: 10px;
             }
+
+            .topnav-right a {
+                padding: 10px;
+            }
+        }
+
+        /* Adding smooth transitions for hover */
+        .topnav a {
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
     </style>
 </head>
