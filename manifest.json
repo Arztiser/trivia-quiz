@@ -87,7 +87,7 @@
     },
     {
       "name": "Videos",
-      "short_name": "Videos",  // Corrected typo
+      "short_name": "Videos",
       "description": "View Random Videos",
       "url": "/videos.html",
       "icons": [{ "src": "/img/prfp.png", "sizes": "192x192", "type": "image/png" }]
