@@ -15,6 +15,8 @@
         body {
             font-family: 'Jersey 10', sans-serif;
             font-size: 30px;
+            margin: 0;
+            padding: 0;
         }
         
         .topnav {
@@ -25,11 +27,23 @@
             justify-content: space-between;
             padding: 0 16px;
             height: 60px;
+            position: relative;
         }
 
         .topnav h1 {
             margin: 0;
             font-size: 24px;
+        }
+
+        .topnav .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: #f2f2f2;
+            cursor: pointer;
+        }
+
+        .topnav-right {
+            display: flex;
         }
 
         .topnav a {
@@ -39,6 +53,7 @@
             padding: 14px 16px;
             text-decoration: none;
             font-size: 18px;
+            white-space: nowrap;
         }
 
         .topnav a:hover {
@@ -85,12 +100,39 @@
         #generate-button:hover {
             background-color: #d12530;
         }
+
+        @media screen and (max-width: 768px) {
+            .topnav-right {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #333;
+                width: 100%;
+            }
+
+            .topnav-right a {
+                text-align: left;
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+
+            .topnav.active .topnav-right {
+                display: flex;
+            }
+
+            .topnav .menu-icon {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="topnav">
-            <h1><a href="#header" class="logo">THE Randoms</a></h1>
+            <h1><a href="index.html" class="logo">THE Randoms</a></h1>
+            <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
             <div class="topnav-right">
                 <a href="index.html">Home</a>
                 <a href="facts.html">Facts</a>
@@ -115,6 +157,10 @@
     </div>
 
     <script>
+        function toggleMenu() {
+            document.querySelector('.topnav').classList.toggle('active');
+        }
+
         const apiKey = 'AIzaSyCVip4R8JYuGRiaioz91ZI3QiATwhIHZNI'; // Replace with your YouTube API key
         const queries = ["funny", "football", "memes", "sports", "cooking", "technology", "news", "baseball", "horror", "video games", "reviews", "random", "reaction", "cartoon", "space", "history", "science", "gaming", "humor", "animations", "basketball", "baseball", "chess", "sandbox", "facts", "south park", "family guy", "the simpsons", "american dad", "futurama", "hockey", "games", "religion"];
 
