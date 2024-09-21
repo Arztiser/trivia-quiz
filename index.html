@@ -82,13 +82,14 @@
             .topnav-right {
                 display: none;
                 flex-direction: column;
-                position: absolute;
+                position: fixed;
                 top: 60px;
                 right: 0;
                 background-color: #333;
                 width: 100%;
-                max-height: 80vh; /* Limit height to 80% of view height */
-                overflow-y: auto; /* Add scroll functionality */
+                height: 100vh; /* Full screen height */
+                overflow-y: auto; /* Allow scroll for long menus */
+                z-index: 1; /* Keep it on top */
             }
 
             .topnav-right a {
