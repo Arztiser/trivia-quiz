@@ -22,6 +22,7 @@
             padding: 0;
         }
 
+        /* Navigation bar styling */
         .topnav {
             overflow: hidden;
             background-color: #333;
@@ -30,28 +31,27 @@
             justify-content: space-between;
             padding: 0 16px;
             height: 60px;
-            position: relative;
-            z-index: 1000; /* Make sure it stays above the rest of the content */
         }
 
         .topnav h1 {
             margin: 0;
             font-size: 24px;
+            color: #f2f2f2;
         }
 
         .topnav .menu-icon {
-            display: none;
-            font-size: 24px;
+            display: none; /* Hidden by default, shown on small screens */
+            font-size: 30px;
             color: #f2f2f2;
             cursor: pointer;
         }
 
+        /* Menu links */
         .topnav-right {
             display: flex;
         }
 
         .topnav a {
-            display: inline-block;
             color: #f2f2f2;
             text-align: center;
             padding: 14px 16px;
@@ -70,43 +70,34 @@
             color: white;
         }
 
-        .logo {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .logo:hover {
-            background-color: transparent;
-        }
-
-        /* Hide the menu on mobile */
+        /* Hide the menu items and display the hamburger icon on mobile */
         @media screen and (max-width: 768px) {
             .topnav-right {
-                display: none;
-                flex-direction: column;
+                display: none; /* Hide menu items by default */
                 position: fixed;
                 top: 60px;
                 right: 0;
                 background-color: #333;
                 width: 100%;
-                height: 100vh; /* Full screen height */
-                overflow-y: auto; /* Allow scroll for long menus */
-                z-index: 999; /* Keep it on top */
+                height: 100vh;
+                flex-direction: column;
+                justify-content: flex-start;
+                z-index: 999;
+                overflow-y: auto;
             }
 
             .topnav-right a {
                 text-align: left;
-                padding: 10px 20px;
-                font-size: 16px;
+                padding: 14px;
+                font-size: 24px; /* Larger font size for mobile menu */
             }
 
             .topnav .menu-icon {
-                display: block;
+                display: block; /* Show the hamburger icon */
             }
 
-            /* When the menu is active (open), make it visible */
             .topnav.active .topnav-right {
-                display: flex;
+                display: flex; /* Show menu items when the icon is clicked */
             }
 
             /* Prevent body from scrolling when the menu is open */
@@ -166,7 +157,7 @@
             // Toggle the 'active' class for showing the menu
             topnav.classList.toggle('active');
 
-            // If the menu is open, prevent body scrolling by adding the 'menu-open' class
+            // If the menu is open, prevent body scrolling
             if (topnav.classList.contains('active')) {
                 body.classList.add('menu-open');
             } else {
