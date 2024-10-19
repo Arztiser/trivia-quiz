@@ -32,11 +32,12 @@
         .topnav h1 {
             margin: 0;
             font-size: 24px;
+            color: #f2f2f2;
         }
 
         .topnav .menu-icon {
             display: none;
-            font-size: 24px;
+            font-size: 30px;
             color: #f2f2f2;
             cursor: pointer;
         }
@@ -46,7 +47,6 @@
         }
 
         .topnav a {
-            display: inline-block;
             color: #f2f2f2;
             text-align: center;
             padding: 14px 16px;
@@ -65,38 +65,37 @@
             color: white;
         }
 
-        .logo {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .logo:hover {
-            background-color: transparent;
-        }
-
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 1024px) {
             .topnav-right {
                 display: none;
-                flex-direction: column;
-                position: absolute;
+                position: fixed;
                 top: 60px;
                 right: 0;
                 background-color: #333;
                 width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: flex-start;
+                z-index: 999;
+                overflow-y: auto;
             }
 
             .topnav-right a {
                 text-align: left;
-                padding: 10px 20px;
-                font-size: 16px;
+                padding: 14px;
+                font-size: 24px;
+            }
+
+            .topnav .menu-icon {
+                display: block;
             }
 
             .topnav.active .topnav-right {
                 display: flex;
             }
 
-            .topnav .menu-icon {
-                display: block;
+            body.menu-open {
+                overflow: hidden;
             }
         }
 
@@ -104,6 +103,7 @@
             margin: 20px;
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
 
         #person-container, #favorites-container {
@@ -121,6 +121,16 @@
 
         .details-grid p + p {
             margin-left: 10px;
+        }
+
+        @media screen and (max-width: 1024px) {
+            #person-container, #favorites-container {
+                width: 100%;
+                text-align: center;
+            }
+            #favorites-container {
+                text-align: left;
+            }
         }
     </style>
 </head>
@@ -162,7 +172,18 @@
     
     <script>
         function toggleMenu() {
-            document.querySelector('.topnav').classList.toggle('active');
+            const topnav = document.querySelector('.topnav');
+            const body = document.body;
+
+            // Toggle the 'active' class for showing the menu
+            topnav.classList.toggle('active');
+
+            // If the menu is open, prevent body scrolling
+            if (topnav.classList.contains('active')) {
+                body.classList.add('menu-open');
+            } else {
+                body.classList.remove('menu-open');
+            }
         }
     </script>
     <script src="person.js"></script>
