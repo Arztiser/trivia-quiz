@@ -74,6 +74,7 @@
             background-color: transparent;
         }
 
+        /* Mobile Menu Styling */
         @media screen and (max-width: 768px) {
             .topnav-right {
                 display: none;
@@ -167,6 +168,7 @@
     </div>
 
     <script>
+        // Fetch a random meme from Reddit
         function getRandomMeme() {
             fetch('https://www.reddit.com/r/memes/random/.json')
                 .then(response => response.json())
@@ -187,6 +189,7 @@
         // Fetch a meme when the button is clicked
         document.getElementById('generate-button').addEventListener('click', getRandomMeme);
 
+        // Toggle the mobile menu
         function toggleMenu() {
             document.querySelector('.topnav').classList.toggle('active');
         }
