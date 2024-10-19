@@ -20,6 +20,7 @@
             padding: 0;
         }
 
+        /* Navigation bar styling */
         .topnav {
             overflow: hidden;
             background-color: #333;
@@ -33,21 +34,22 @@
         .topnav h1 {
             margin: 0;
             font-size: 24px;
+            color: #f2f2f2;
         }
 
         .topnav .menu-icon {
-            display: none;
-            font-size: 24px;
+            display: none; /* Hidden by default, shown on small screens */
+            font-size: 30px;
             color: #f2f2f2;
             cursor: pointer;
         }
 
+        /* Menu links */
         .topnav-right {
             display: flex;
         }
 
         .topnav a {
-            display: inline-block;
             color: #f2f2f2;
             text-align: center;
             padding: 14px 16px;
@@ -66,39 +68,39 @@
             color: white;
         }
 
-        .logo {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .logo:hover {
-            background-color: transparent;
-        }
-
-        /* Hide the menu on mobile */
-        @media screen and (max-width: 768px) {
+        /* Hide the menu items and display the hamburger icon on mobile */
+        @media screen and (max-width: 1024px) { /* Increased to 1024px for iPads */
             .topnav-right {
-                display: none;
-                flex-direction: column;
-                position: absolute;
+                display: none; /* Hide menu items by default */
+                position: fixed;
                 top: 60px;
                 right: 0;
                 background-color: #333;
                 width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: flex-start;
+                z-index: 999;
+                overflow-y: auto; /* Allow scrolling if menu items exceed screen height */
             }
 
             .topnav-right a {
                 text-align: left;
-                padding: 10px 20px;
-                font-size: 16px;
+                padding: 14px;
+                font-size: 24px; /* Larger font size for mobile menu */
             }
 
             .topnav .menu-icon {
-                display: block;
+                display: block; /* Show the hamburger icon */
             }
 
             .topnav.active .topnav-right {
-                display: flex;
+                display: flex; /* Show menu items when the icon is clicked */
+            }
+
+            /* Prevent body from scrolling when the menu is open */
+            body.menu-open {
+                overflow: hidden;
             }
         }
 
@@ -137,7 +139,18 @@
 
     <script>
         function toggleMenu() {
-            document.querySelector('.topnav').classList.toggle('active');
+            const topnav = document.querySelector('.topnav');
+            const body = document.body;
+
+            // Toggle the 'active' class for showing the menu
+            topnav.classList.toggle('active');
+
+            // If the menu is open, prevent body scrolling
+            if (topnav.classList.contains('active')) {
+                body.classList.add('menu-open');
+            } else {
+                body.classList.remove('menu-open');
+            }
         }
     </script>
     <script src="letters.js"></script>
