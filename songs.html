@@ -221,7 +221,7 @@
             // Add a random query parameter to avoid caching issues
             const audioPlayer = document.getElementById('audio-player');
             const randomParam = Math.random();
-            audioPlayer.src = ${randomSong}?v=${randomParam};
+            audioPlayer.src = `${randomSong}?v=${randomParam}`;
 
             // Add event listener to handle errors
             audioPlayer.onerror = function () {
