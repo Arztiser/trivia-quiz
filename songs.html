@@ -175,61 +175,62 @@
     </div>
 
     <script>
-        function toggleMenu() {
-            const topnav = document.querySelector('.topnav');
-            const body = document.body;
+    // Toggles the mobile menu visibility
+    function toggleMenu() {
+        const topnav = document.querySelector('.topnav');
+        const body = document.body;
 
-            // Toggle the 'active' class for showing the menu
-            topnav.classList.toggle('active');
+        // Toggle menu visibility and prevent scrolling when menu is open
+        topnav.classList.toggle('active');
+        body.classList.toggle('menu-open', topnav.classList.contains('active'));
+    }
 
-            // If the menu is open, prevent body scrolling
-            if (topnav.classList.contains('active')) {
-                body.classList.add('menu-open');
-            } else {
-                body.classList.remove('menu-open');
-            }
+    let previousSongs = []; // Tracks previously played songs
+
+    // Function to play a random song
+    function getRandomSong() {
+        const songs = [
+            'audio/Crazy_Hazy_Dream.mp3',
+            'audio/Name_Song.mp3',
+            'audio/Arbitrary_Awareness.mp3',
+            'audio/Eternal_Enthusiasm.mp3',
+            'audio/Amusing_Adventure.mp3',
+            'audio/Definite_Delight.mp3',
+            'audio/Fabulous_Fun.mp3',
+            'audio/Magical_Memory.mp3',
+        ];
+
+        // Reset the played songs list if all songs have been played
+        if (previousSongs.length >= songs.length) {
+            previousSongs = [];
         }
 
-        let previousSongs = [];
+        // Filter songs that haven't been played yet
+        const availableSongs = songs.filter(song => !previousSongs.includes(song));
+        const randomIndex = Math.floor(Math.random() * availableSongs.length);
+        const randomSong = availableSongs[randomIndex];
 
-        function getRandomSong() {
-            const songs = [
-                'audio/Crazy_Hazy_Dream.mp3',
-                'audio/Name_Song.mp3',
-                'audio/Arbitrary_Awareness.mp3',
-                'audio/Eternal_Enthusiasm.mp3',
-                'audio/Amusing_Adventure.mp3',
-                'audio/Definite_Delight.mp3',
-                'audio/Fabulous_Fun.mp3',
-                'audio/Magical_Memory.mp3',
-            ];
+        // Add the selected song to the played songs list
+        previousSongs.push(randomSong);
 
-            if (previousSongs.length >= songs.length) {
-                previousSongs = [];
-            }
+        const audioPlayer = document.getElementById('audio-player');
+        const randomParam = Math.random(); // Prevent caching issues
+        audioPlayer.src = `${randomSong}?v=${randomParam}`;
 
-            const availableSongs = songs.filter(song => !previousSongs.includes(song));
-            const randomIndex = Math.floor(Math.random() * availableSongs.length);
-            const randomSong = availableSongs[randomIndex];
+        // Handle errors and retry if a song fails to load
+        audioPlayer.onerror = function () {
+            console.error(`Failed to load audio: ${randomSong}. Retrying...`);
+            getRandomSong(); // Retry with a new song
+        };
 
-            previousSongs.push(randomSong);
+        // Load and play the selected song
+        audioPlayer.load();
+        audioPlayer.play();
+    }
 
-            const audioPlayer = document.getElementById('audio-player');
-            const randomParam = Math.random();
-            audioPlayer.src = `${randomSong}?v=${randomParam}`;
+    // Trigger a random song on page load
+    window.onload = getRandomSong;
 
-            audioPlayer.onerror = function () {
-                console.error("Failed to load audio. Retrying...");
-                getRandomSong();
-            };
-
-            audioPlayer.load();
-            audioPlayer.play();
-        }
-
-        window.onload = getRandomSong;
-        document.getElementById('generate-button').addEventListener('click', getRandomSong);
-    </script>
-</body>
-
-</html>
+    // Attach the click event to the generate button
+    document.getElementById('generate-button').addEventListener('click', getRandomSong);
+</script>
