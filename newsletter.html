@@ -20,6 +20,9 @@
             font-size: 30px;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
 
         /* Navigation bar styling */
@@ -105,22 +108,30 @@
             }
         }
 
-        .container {
-            margin: 20px;
-        }
-
+        /* Centered content */
         .content {
             text-align: center;
+            margin: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .content h1 {
             margin-bottom: 20px;
         }
 
+        .content p {
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* Styling for iframe */
         iframe {
             width: 100%;
-            max-width: 540px;
-            height: 305px;
+            max-width: 600px; /* Set max-width to ensure it doesn't stretch too wide */
+            height: 500px;
             border: none;
             margin: 20px auto;
             display: block;
