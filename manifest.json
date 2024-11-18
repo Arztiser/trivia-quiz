@@ -31,5 +31,7 @@
   "prefer_related_applications": false,
   "developer": {
     "name": "Arztiser"
+    "role": "Owner"
+    "email": "therandomsheadquarters@gmail.com"
   }
 }
