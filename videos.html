@@ -127,6 +127,46 @@
                 display: block;
             }
         }
+        
+        /* Hide the menu items and display the hamburger icon on mobile */
+        @media screen and (max-width: 1024px) { /* Increased to 1024px for iPads */
+            .topnav-right {
+                display: none; /* Hide menu items by default */
+                position: fixed;
+                top: 60px;
+                right: 0;
+                background-color: #333;
+                width: 100%;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: flex-start;
+                z-index: 999;
+                overflow-y: auto; /* Allow scrolling if menu items exceed screen height */
+            }
+
+            .topnav-right a {
+                text-align: left;
+                padding: 14px;
+                font-size: 24px; /* Larger font size for mobile menu */
+            }
+
+            .topnav .menu-icon {
+                display: block; /* Show the hamburger icon */
+            }
+
+            .topnav.active .topnav-right {
+                display: flex; /* Show menu items when the icon is clicked */
+            }
+
+            /* Prevent body from scrolling when the menu is open */
+            body.menu-open {
+                overflow: hidden;
+            }
+        }
+
+        .container {
+            margin: 20px;
+        }
     </style>
 </head>
 
