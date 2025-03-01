@@ -146,27 +146,35 @@
     <button id="generate-button">Generate Meme</button>
     <div id="meme-container">
       <img id="meme" src="" alt="Random Meme">
+      <p id="meme-title"></p>
     </div>
   </div>
 
   <script>
-    function getRandomMeme() {
-      fetch('https://api.imgflip.com/get_memes')
-        .then(response => response.json())
-        .then(data => {
-          if (!data.success) {
-            throw new Error("Imgflip API returned an error.");
-          }
-          const memes = data.data.memes;
-          const randomIndex = Math.floor(Math.random() * memes.length);
-          const meme = memes[randomIndex];
-          document.getElementById('meme').src = meme.url;
-          document.getElementById('meme').alt = meme.name;
-        })
-        .catch(error => {
-          console.error('Error fetching meme:', error);
-          document.getElementById('meme').alt = 'Error loading meme. Please try again later.';
-        });
+    async function getRandomMeme() {
+      try {
+        // List of meme subreddits
+        const subreddits = ["memes", "dankmemes", "funny"];
+        const randomSub = subreddits[Math.floor(Math.random() * subreddits.length)];
+        
+        // Fetch a random post from Reddit JSON API
+        const response = await fetch(`https://www.reddit.com/r/${randomSub}/random.json`);
+        const data = await response.json();
+
+        // Extract post details
+        const post = data[0].data.children[0].data;
+        if (!post.url || post.is_video) {
+          throw new Error("Invalid post, fetching another meme...");
+        }
+
+        document.getElementById('meme').src = post.url;
+        document.getElementById('meme').alt = post.title;
+        document.getElementById('meme-title').innerText = post.title;
+
+      } catch (error) {
+        console.error("Error fetching meme:", error);
+        document.getElementById('meme').alt = "Failed to load meme. Try again!";
+      }
     }
 
     // Fetch a meme on page load
