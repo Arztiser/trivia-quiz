@@ -105,11 +105,6 @@
       border-radius: 8px;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
-    #meme-title {
-      font-size: 18px;
-      color: #333;
-      margin-top: 10px;
-    }
     #generate-button {
       margin-top: 15px;
       padding: 8px 16px;
@@ -151,7 +146,6 @@
     <button id="generate-button">Generate Meme</button>
     <div id="meme-container">
       <img id="meme" src="" alt="Random Meme">
-      <p id="meme-title"></p>
     </div>
   </div>
 
@@ -181,12 +175,10 @@
         // Display the meme
         document.getElementById('meme').src = randomMeme.url;
         document.getElementById('meme').alt = randomMeme.title;
-        document.getElementById('meme-title').innerText = randomMeme.title;
 
       } catch (error) {
         console.error("Error fetching meme:", error);
         document.getElementById('meme').alt = "Failed to load meme. Try again!";
-        document.getElementById('meme-title').innerText = "";
       }
     }
 
