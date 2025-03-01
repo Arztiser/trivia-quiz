@@ -89,7 +89,7 @@
             .topnav-right a {
                 text-align: left;
                 padding: 14px;
-                font-size: 24px; /* Larger font size for mobile menu */
+                font-size: 24px;
             }
 
             .topnav .menu-icon {
@@ -167,38 +167,45 @@
         </div>
     </div>
 
- <script>
-    function getRandomMeme() {
-    fetch('https://www.reddit.com/r/memes/random/.json')
-        .then(response => response.json())
-        .then(data => {
-            if (!data || !data.length) {
-                throw new Error("Invalid response from Reddit API");
-            }
+    <script>
+        function getRandomMeme() {
+            fetch('https://www.reddit.com/r/memes/random/.json')
+                .then(response => response.json())
+                .then(data => {
+                    if (!data || !data.length) {
+                        throw new Error("Invalid response from Reddit API");
+                    }
 
-            const memeData = data[0].data.children[0].data;
-            const memeUrl = memeData.url;
-            const title = memeData.title;
+                    const post = data[0].data.children[0].data;
+                    let memeUrl = post.url;
+                    const title = post.title;
 
-            // Ensure the URL is an image
-            if (memeUrl.endsWith('.jpg') || memeUrl.endsWith('.png') || memeUrl.endsWith('.jpeg')) {
-                document.getElementById('meme').src = memeUrl;
-                document.getElementById('meme').alt = title;
-            } else {
-                throw new Error("Non-image URL received");
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching meme:', error);
-            document.getElementById('meme').alt = 'Error loading meme. Please try again later.';
-        });
-}
+                    // Check if the URL is a valid image
+                    if (memeUrl.includes("preview.redd.it") || memeUrl.endsWith('.jpg') || memeUrl.endsWith('.png') || memeUrl.endsWith('.jpeg')) {
+                        document.getElementById('meme').src = memeUrl;
+                        document.getElementById('meme').alt = title;
+                    } else {
+                        // If the post is a video or gallery, fetch another meme
+                        console.log("Non-image URL received, retrying...");
+                        getRandomMeme();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching meme:', error);
+                    document.getElementById('meme').alt = 'Error loading meme. Please try again later.';
+                });
+        }
 
-// Fetch a meme on page load
-window.onload = getRandomMeme;
+        // Fetch a meme on page load
+        window.onload = getRandomMeme;
 
-// Fetch a meme when the button is clicked
-document.getElementById('generate-button').addEventListener('click', getRandomMeme);
-</script>
+        // Fetch a meme when the button is clicked
+        document.getElementById('generate-button').addEventListener('click', getRandomMeme);
+
+        // Toggle the mobile menu
+        function toggleMenu() {
+            document.querySelector('.topnav').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
